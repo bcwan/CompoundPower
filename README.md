@@ -10,7 +10,7 @@
 * [Inspiration](#inspiration)
 
 ## General info
-A Django, React, Redux, and PostgreSQL application where users can set financial goals and play with financial calculators.
+A Django, React, Redux, and PostgreSQL application where users can set financial goals and calculate future goals with financial calculators.
 
 [Live Link]()
 
