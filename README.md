@@ -35,9 +35,15 @@ A Django, React, Redux, and PostgreSQL application where users can set financial
 
 ## Features
 List of features
-* Sliding blocks on grid based on direction key pressed
-* Blocks that do not have equivalent numbers will not merge
-* Reset button for new game
+* User authentication, where users can create an account and log in, sign out, sign in, or sign up
+* Compound interest calculator to calculate valuations
+* California paycheck calculator
+* California capital gains calculator
+
+## Disclaimer
+Content is intended to be used for informational purposes only. It's very important to do your own analysis before making
+any investment based on your own personal circumstances. In other words, do your own independent research or speak with a
+qualified investment professional before making any financial decisions.
 
 ## Status
 Project is: _in progress_. 
