@@ -1,17 +1,3 @@
-// module.exports = {
-//   module: {
-//     rules: [
-//       {
-//         test: /\.js$/,
-//         exclude: /node_modules/,
-//         use: {
-//           loader: "babel-loader"
-//         }
-//       }
-//     ]
-//   }
-// }
-
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '*']
@@ -23,10 +9,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
-          query: {
-            presets: ['@babel/env', '@babel/react']
-          }
+          loader: 'babel-loader'
         },
       },
       {
