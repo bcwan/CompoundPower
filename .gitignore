@@ -84,3 +84,4 @@ sftp-config.json
 .DS_Store
 ./userauth/settings.py
 compound_power/compound_power/settings.py
+.vscode
