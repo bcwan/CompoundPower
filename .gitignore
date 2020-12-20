@@ -83,3 +83,4 @@ sftp-config.json
 # Mac
 .DS_Store
 ./userauth/settings.py
+compound_power/compound_power/settings.py
