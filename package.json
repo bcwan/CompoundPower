@@ -4,7 +4,8 @@
   "description": "## Table of contents * [General info](#general-info) * [Screenshots](#screenshots) * [Technologies](#technologies) * [Setup](#setup) * [Features](#features) * [Status](#status) * [Inspiration](#inspiration)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch ./leadmanager/frontend/src/index.js -o ./leadmanager/frontend/static/frontend/",
+    "build": "webpack --mode production ./leadmanager/frontend/src/index.js -o ./leadmanager/frontend/static/frontend/"
   },
   "repository": {
     "type": "git",
