@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import Form from './form';
-import Users from './users';
+import UsersIndex from './users_index';
 
 export default function Dashboard() {
   return (
     <Fragment>
       <Form />
-      <Users />
+      <UsersIndex />
     </Fragment>
   )
 }

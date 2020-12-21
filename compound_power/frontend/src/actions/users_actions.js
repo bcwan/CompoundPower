@@ -19,5 +19,5 @@ export const fetchAllUsers = () => dispatch => {
     .then(questions => {
       dispatch(getAllUsers(questions))
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
 }
