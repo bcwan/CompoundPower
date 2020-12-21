@@ -2370,7 +2370,10 @@ var UserReducer = function UserReducer() {
 
   switch (action.type) {
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_0__.GET_ALL_USERS:
-      return action.users.data;
+      action.users.data.forEach(function (user) {
+        nextState[user.id] = user;
+      });
+      return nextState;
 
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_0__.GET_USER:
       nextState[action.user.data.id] = action.user.data;
