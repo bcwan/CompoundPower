@@ -6,11 +6,11 @@ import {
 } from '../../actions/users_actions';
 
 const mSTP = (state) => ({
-  users: Object.values()
+  users: Object.values(state.entities.users),
 });
 
 const mDTP = (dispatch) => ({
-
+  fetchAllUsers: () => dispatch(fetchAllUsers())
 });
 
 export default connect(mSTP, mDTP)(UsersIndex);
