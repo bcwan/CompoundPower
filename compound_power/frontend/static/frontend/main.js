@@ -71,7 +71,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPOR
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "header": () => /* binding */ header,
+/* harmony export */   "Header": () => /* binding */ Header,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -98,18 +98,18 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-var header = /*#__PURE__*/function (_Component) {
-  _inherits(header, _Component);
+var Header = /*#__PURE__*/function (_Component) {
+  _inherits(Header, _Component);
 
-  var _super = _createSuper(header);
+  var _super = _createSuper(Header);
 
-  function header() {
-    _classCallCheck(this, header);
+  function Header() {
+    _classCallCheck(this, Header);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(header, [{
+  _createClass(Header, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
@@ -130,15 +130,15 @@ var header = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         className: "navbar-brand",
         href: "#"
-      }, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, "CompoundPower"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "navbar-nav mr-auto mt-2 mt-lg-0"
       })));
     }
   }]);
 
-  return header;
+  return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (header);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
 
 /***/ }),
 

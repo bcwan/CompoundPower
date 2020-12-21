@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class header extends Component {
+export class Header extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -8,7 +8,7 @@ export class header extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a className="navbar-brand" href="#">Users</a>
+          <a className="navbar-brand" href="#">CompoundPower</a>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           </ul>
         </div>
@@ -17,4 +17,4 @@ export class header extends Component {
   }
 }
 
-export default header
+export default Header
