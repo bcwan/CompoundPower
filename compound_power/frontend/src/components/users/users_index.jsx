@@ -2,13 +2,6 @@ import React, { Component, Fragment } from 'react'
 
 class UsersIndex extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
   componentDidMount() {
     this.props.fetchAllUsers();
   }

@@ -2209,14 +2209,10 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(UsersIndex);
 
-  function UsersIndex(props) {
-    var _this;
-
+  function UsersIndex() {
     _classCallCheck(this, UsersIndex);
 
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(UsersIndex, [{
@@ -2227,7 +2223,7 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Users List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
         className: "table table-striped"
@@ -2236,7 +2232,7 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
           key: user.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           onClick: function onClick() {
-            return _this2.props.deleteUser(user.id);
+            return _this.props.deleteUser(user.id);
           },
           className: "btn btn-danger btn-sm"
         }, "Delete")));
