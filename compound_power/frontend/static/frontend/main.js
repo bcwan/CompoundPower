@@ -2117,7 +2117,6 @@ function Dashboard() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UserForm": () => /* binding */ UserForm,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2144,15 +2143,20 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
+
 var UserForm = /*#__PURE__*/function (_Component) {
   _inherits(UserForm, _Component);
 
   var _super = _createSuper(UserForm);
 
-  function UserForm() {
+  function UserForm(props) {
+    var _this;
+
     _classCallCheck(this, UserForm);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(UserForm, [{
@@ -2164,6 +2168,7 @@ var UserForm = /*#__PURE__*/function (_Component) {
 
   return UserForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserForm);
 
 /***/ }),

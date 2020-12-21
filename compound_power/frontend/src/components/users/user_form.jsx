@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 
-export class UserForm extends Component {
+class UserForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
+
   render() {
     return (
       <div>
