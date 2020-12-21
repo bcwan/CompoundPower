@@ -1878,13 +1878,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GET_ALL_USERS": () => /* binding */ GET_ALL_USERS,
 /* harmony export */   "GET_USER": () => /* binding */ GET_USER,
-/* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers
+/* harmony export */   "REMOVE_USER": () => /* binding */ REMOVE_USER,
+/* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
+/* harmony export */   "deleteUser": () => /* binding */ deleteUser
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
+var REMOVE_USER = 'REMOVE_USER';
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1898,6 +1901,13 @@ var getUser = function getUser(user) {
     type: GET_USER,
     user: user
   };
+};
+
+var removeUser = function removeUser(userId) {
+  return {
+    type: REMOVE_USER,
+    userId: userId
+  };
 }; // GET USERS
 
 
@@ -1905,6 +1915,16 @@ var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (questions) {
       dispatch(getAllUsers(questions));
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  };
+}; // DELETE USER
+
+var deleteUser = function deleteUser(id) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
+      dispatch(removeUser(id));
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -2203,12 +2223,15 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Users List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
         className: "table table-striped"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, this.props.users.map(function (user) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
           key: user.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          onClick: _this.props.deleteUser.bind(_this, user.id),
           className: "btn btn-danger btn-sm"
         }, "Delete")));
       }))));
@@ -2249,6 +2272,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchAllUsers: function fetchAllUsers() {
       return dispatch((0,_actions_users_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
+    },
+    deleteUser: function deleteUser(userId) {
+      return dispatch((0,_actions_users_actions__WEBPACK_IMPORTED_MODULE_2__.deleteUser)(userId));
     }
   };
 };
@@ -2341,6 +2367,10 @@ var UserReducer = function UserReducer() {
 
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_0__.GET_USER:
       nextState[action.user.data.id] = action.user.data;
+      return nextState;
+
+    case _actions_users_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_USER:
+      delete nextState[action.userId];
       return nextState;
 
     default:

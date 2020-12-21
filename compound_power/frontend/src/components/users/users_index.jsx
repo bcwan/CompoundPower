@@ -28,7 +28,12 @@ export class UsersIndex extends Component {
                   <td>{user.name}</td>
                   <td>{user.username}</td>
                   <td>{user.email}</td>
-                  <td><button className="btn btn-danger btn-sm">Delete</button></td>
+                  <td>
+                    <button onClick={this.props.deleteUser.bind(this, user.id)} 
+                            className="btn btn-danger btn-sm">
+                            Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             }

@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import UsersIndex from './users_index';
 
 import {
-  fetchAllUsers
+  fetchAllUsers,
+  deleteUser
 } from '../../actions/users_actions';
 
 const mSTP = (state) => ({
@@ -10,7 +11,8 @@ const mSTP = (state) => ({
 });
 
 const mDTP = (dispatch) => ({
-  fetchAllUsers: () => dispatch(fetchAllUsers())
+  fetchAllUsers: () => dispatch(fetchAllUsers()),
+  deleteUser: (userId) => dispatch(deleteUser(userId))
 });
 
 export default connect(mSTP, mDTP)(UsersIndex);
