@@ -4,15 +4,20 @@ import ReactDOM from 'react-dom';
 import Header from './header/header';
 import Dashboard from './users/dashboard';
 
+import { Provider } from 'react-redux';
+import configureStore from '../store/store';
+
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Header />
-        <div className="container">
-          <Dashboard />
-        </div>
-      </Fragment>
+      <Provider store={configureStore()}>
+        <Fragment>
+          <Header />
+          <div className="container">
+            <Dashboard />
+          </div>
+        </Fragment>
+      </Provider>
     )
   }
 }
