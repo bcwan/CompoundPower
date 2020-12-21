@@ -2097,27 +2097,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ Dashboard
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./form */ "./compound_power/frontend/src/components/users/form.jsx");
+/* harmony import */ var _user_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_form */ "./compound_power/frontend/src/components/users/user_form.jsx");
 /* harmony import */ var _users_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_index_container */ "./compound_power/frontend/src/components/users/users_index_container.js");
 
 
 
 function Dashboard() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_form__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
 }
 
 /***/ }),
 
-/***/ "./compound_power/frontend/src/components/users/form.jsx":
-/*!***************************************************************!*\
-  !*** ./compound_power/frontend/src/components/users/form.jsx ***!
-  \***************************************************************/
+/***/ "./compound_power/frontend/src/components/users/user_form.jsx":
+/*!********************************************************************!*\
+  !*** ./compound_power/frontend/src/components/users/user_form.jsx ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Form": () => /* binding */ Form,
+/* harmony export */   "UserForm": () => /* binding */ UserForm,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2144,27 +2144,27 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-var Form = /*#__PURE__*/function (_Component) {
-  _inherits(Form, _Component);
+var UserForm = /*#__PURE__*/function (_Component) {
+  _inherits(UserForm, _Component);
 
-  var _super = _createSuper(Form);
+  var _super = _createSuper(UserForm);
 
-  function Form() {
-    _classCallCheck(this, Form);
+  function UserForm() {
+    _classCallCheck(this, UserForm);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(Form, [{
+  _createClass(UserForm, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Add User Form"));
     }
   }]);
 
-  return Form;
+  return UserForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserForm);
 
 /***/ }),
 
