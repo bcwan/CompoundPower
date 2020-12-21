@@ -5,9 +5,9 @@ const UserReducer = (oldState = {}, action) => {
   let nextState = Object.assign({}, oldState);
   switch (action.type) {
     case GET_ALL_USERS:
-      return action.users;
+      return action.users.data;
     case GET_USER:
-      nextState[action.user.id] = action.user;
+      nextState[action.user.data.id] = action.user.data;
       return nextState;
     default:
       return oldState;
