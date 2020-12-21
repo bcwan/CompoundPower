@@ -1,6 +1,13 @@
 import React, { Component, Fragment } from 'react'
 
-export class UsersIndex extends Component {
+class UsersIndex extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
 
   componentDidMount() {
     this.props.fetchAllUsers();
@@ -29,7 +36,7 @@ export class UsersIndex extends Component {
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>
-                    <button onClick={this.props.deleteUser.bind(this, user.id)} 
+                    <button onClick={() => this.props.deleteUser(user.id)} 
                             className="btn btn-danger btn-sm">
                             Delete
                     </button>

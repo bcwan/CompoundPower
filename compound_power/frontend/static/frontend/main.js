@@ -2177,7 +2177,6 @@ var Form = /*#__PURE__*/function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UsersIndex": () => /* binding */ UsersIndex,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2204,15 +2203,20 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
+
 var UsersIndex = /*#__PURE__*/function (_Component) {
   _inherits(UsersIndex, _Component);
 
   var _super = _createSuper(UsersIndex);
 
-  function UsersIndex() {
+  function UsersIndex(props) {
+    var _this;
+
     _classCallCheck(this, UsersIndex);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(UsersIndex, [{
@@ -2223,7 +2227,7 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Users List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
         className: "table table-striped"
@@ -2231,7 +2235,9 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
           key: user.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: _this.props.deleteUser.bind(_this, user.id),
+          onClick: function onClick() {
+            return _this2.props.deleteUser(user.id);
+          },
           className: "btn btn-danger btn-sm"
         }, "Delete")));
       }))));
@@ -2240,6 +2246,7 @@ var UsersIndex = /*#__PURE__*/function (_Component) {
 
   return UsersIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UsersIndex);
 
 /***/ }),
