@@ -20,7 +20,7 @@ class UserForm extends Component {
   }
 
   render() {
-    
+
     const { name, username, email } = this.state;
 
     return (
@@ -49,7 +49,7 @@ class UserForm extends Component {
           </div>
           <div className="form-group">
             <label>Email</label>
-            <textarea
+            <input
               className="form-control"
               type="email"
               name="email"
