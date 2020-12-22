@@ -15,6 +15,11 @@ const getUser = user => ({
   user
 });
 
+const postUser = user => ({
+  type: ADD_USER,
+  user
+});
+
 const removeUser = userId => ({
   type: REMOVE_USER,
   userId
@@ -23,8 +28,8 @@ const removeUser = userId => ({
 // GET USERS
 export const fetchAllUsers = () => dispatch => {
   axios.get('/api/users/')
-    .then(questions => {
-      dispatch(getAllUsers(questions))
+    .then(users => {
+      dispatch(getAllUsers(users))
     })
     .catch(error => console.log(error));
 }
@@ -39,3 +44,10 @@ export const deleteUser = (id) => dispatch => {
 }
 
 // POST USER
+export const addUser = (user) => dispatch => {
+  axios.post('/api/users/', user)
+    .then(user => {
+      dispatch(postUser(user))
+    })
+    .catch(error => console.log(error));
+}
