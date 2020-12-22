@@ -1879,6 +1879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GET_ALL_USERS": () => /* binding */ GET_ALL_USERS,
 /* harmony export */   "GET_USER": () => /* binding */ GET_USER,
 /* harmony export */   "REMOVE_USER": () => /* binding */ REMOVE_USER,
+/* harmony export */   "ADD_USER": () => /* binding */ ADD_USER,
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "deleteUser": () => /* binding */ deleteUser
 /* harmony export */ });
@@ -1888,6 +1889,7 @@ __webpack_require__.r(__webpack_exports__);
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
 var REMOVE_USER = 'REMOVE_USER';
+var ADD_USER = 'ADD_USER';
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1929,7 +1931,7 @@ var deleteUser = function deleteUser(id) {
       return console.log(error);
     });
   };
-};
+}; // POST USER
 
 /***/ }),
 

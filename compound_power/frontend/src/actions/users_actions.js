@@ -3,6 +3,7 @@ import axios from 'axios';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER = 'GET_USER';
 export const REMOVE_USER = 'REMOVE_USER'
+export const ADD_USER = 'ADD_USER';
 
 const getAllUsers = users => ({
   type: GET_ALL_USERS,
