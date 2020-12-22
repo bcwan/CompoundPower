@@ -36,3 +36,5 @@ export const deleteUser = (id) => dispatch => {
     })
     .catch(error => console.log(error));
 }
+
+// POST USER
