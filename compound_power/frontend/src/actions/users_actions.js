@@ -19,7 +19,11 @@ const notifyFailure = (message) => {
   toast.error(message);
 }
 
+const notifyDeletion = (message) => {
+  toast.warning(message);
+}
 
+// ACTIONS
 const getAllUsers = users => ({
   type: GET_ALL_USERS,
   users
@@ -44,6 +48,7 @@ const removeUser = userId => ({
 export const fetchAllUsers = () => dispatch => {
   axios.get('/api/users/')
     .then(users => {
+      notifySuccess('Fetched all users!')
       dispatch(getAllUsers(users))
     })
     .catch(error => console.log(error));
@@ -53,6 +58,7 @@ export const fetchAllUsers = () => dispatch => {
 export const deleteUser = (id) => dispatch => {
   axios.delete(`/api/users/${id}/`)
     .then(() => {
+      notifyWarning('Deleted user successfully!')
       dispatch(removeUser(id))
     })
     .catch(error => console.log(error));
@@ -62,6 +68,7 @@ export const deleteUser = (id) => dispatch => {
 export const addUser = (user) => dispatch => {
   axios.post('/api/users/', user)
     .then(user => {
+      notifySuccess('Add user successfully!')
       dispatch(postUser(user))
     })
     .catch(error => console.log(error));

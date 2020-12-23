@@ -32,6 +32,25 @@ function _extends() {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ _inheritsLoose
+/* harmony export */ });
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
@@ -1886,11 +1905,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+
+
 
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
 var REMOVE_USER = 'REMOVE_USER';
 var ADD_USER = 'ADD_USER';
+react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.configure(); // TOAST MESSAGES
+
+var notifySuccess = function notifySuccess(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success(message);
+};
+
+var notifyFailure = function notifyFailure(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error(message);
+};
+
+var notifyDeletion = function notifyDeletion(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning(message);
+}; // ACTIONS
+
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1924,6 +1961,7 @@ var removeUser = function removeUser(userId) {
 var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (users) {
+      notifySuccess('Fetched all users!');
       dispatch(getAllUsers(users));
     })["catch"](function (error) {
       return console.log(error);
@@ -1934,6 +1972,7 @@ var fetchAllUsers = function fetchAllUsers() {
 var deleteUser = function deleteUser(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
+      notifyWarning('Deleted user successfully!');
       dispatch(removeUser(id));
     })["catch"](function (error) {
       return console.log(error);
@@ -1944,6 +1983,7 @@ var deleteUser = function deleteUser(id) {
 var addUser = function addUser(user) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/', user).then(function (user) {
+      notifySuccess('Add user successfully!');
       dispatch(postUser(user));
     })["catch"](function (error) {
       return console.log(error);
@@ -2545,6 +2585,206 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./node_modules/clsx/dist/clsx.m.js":
+/*!******************************************!*\
+  !*** ./node_modules/clsx/dist/clsx.m.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* export default binding */ __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+function toVal(mix) {
+	var k, y, str='';
+
+	if (typeof mix === 'string' || typeof mix === 'number') {
+		str += mix;
+	} else if (typeof mix === 'object') {
+		if (Array.isArray(mix)) {
+			for (k=0; k < mix.length; k++) {
+				if (mix[k]) {
+					if (y = toVal(mix[k])) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			}
+		} else {
+			for (k in mix) {
+				if (mix[k]) {
+					str && (str += ' ');
+					str += k;
+				}
+			}
+		}
+	}
+
+	return str;
+}
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+	var i=0, tmp, x, str='';
+	while (i < arguments.length) {
+		if (tmp = arguments[i++]) {
+			if (x = toVal(tmp)) {
+				str && (str += ' ');
+				str += x
+			}
+		}
+	}
+	return str;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/react-toastify/dist/ReactToastify.css":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \**************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".Toastify__toast-container {\n  z-index: 9999;\n  -webkit-transform: translate3d(0, 0, 9999px);\n  position: fixed;\n  padding: 4px;\n  width: 320px;\n  box-sizing: border-box;\n  color: #fff;\n}\n.Toastify__toast-container--top-left {\n  top: 1em;\n  left: 1em;\n}\n.Toastify__toast-container--top-center {\n  top: 1em;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Toastify__toast-container--top-right {\n  top: 1em;\n  right: 1em;\n}\n.Toastify__toast-container--bottom-left {\n  bottom: 1em;\n  left: 1em;\n}\n.Toastify__toast-container--bottom-center {\n  bottom: 1em;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Toastify__toast-container--bottom-right {\n  bottom: 1em;\n  right: 1em;\n}\n\n@media only screen and (max-width : 480px) {\n  .Toastify__toast-container {\n    width: 100vw;\n    padding: 0;\n    left: 0;\n    margin: 0;\n  }\n  .Toastify__toast-container--top-left, .Toastify__toast-container--top-center, .Toastify__toast-container--top-right {\n    top: 0;\n    transform: translateX(0);\n  }\n  .Toastify__toast-container--bottom-left, .Toastify__toast-container--bottom-center, .Toastify__toast-container--bottom-right {\n    bottom: 0;\n    transform: translateX(0);\n  }\n  .Toastify__toast-container--rtl {\n    right: 0;\n    left: initial;\n  }\n}\n.Toastify__toast {\n  position: relative;\n  min-height: 64px;\n  box-sizing: border-box;\n  margin-bottom: 1rem;\n  padding: 8px;\n  border-radius: 1px;\n  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  max-height: 800px;\n  overflow: hidden;\n  font-family: sans-serif;\n  cursor: pointer;\n  direction: ltr;\n}\n.Toastify__toast--rtl {\n  direction: rtl;\n}\n.Toastify__toast--dark {\n  background: #121212;\n  color: #fff;\n}\n.Toastify__toast--default {\n  background: #fff;\n  color: #aaa;\n}\n.Toastify__toast--info {\n  background: #3498db;\n}\n.Toastify__toast--success {\n  background: #07bc0c;\n}\n.Toastify__toast--warning {\n  background: #f1c40f;\n}\n.Toastify__toast--error {\n  background: #e74c3c;\n}\n.Toastify__toast-body {\n  margin: auto 0;\n  -ms-flex: 1 1 auto;\n      flex: 1 1 auto;\n}\n\n@media only screen and (max-width : 480px) {\n  .Toastify__toast {\n    margin-bottom: 0;\n  }\n}\n.Toastify__close-button {\n  color: #fff;\n  background: transparent;\n  outline: none;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  opacity: 0.7;\n  transition: 0.3s ease;\n  -ms-flex-item-align: start;\n      align-self: flex-start;\n}\n.Toastify__close-button--default {\n  color: #000;\n  opacity: 0.3;\n}\n.Toastify__close-button > svg {\n  fill: currentColor;\n  height: 16px;\n  width: 14px;\n}\n.Toastify__close-button:hover, .Toastify__close-button:focus {\n  opacity: 1;\n}\n\n@keyframes Toastify__trackProgress {\n  0% {\n    transform: scaleX(1);\n  }\n  100% {\n    transform: scaleX(0);\n  }\n}\n.Toastify__progress-bar {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 5px;\n  z-index: 9999;\n  opacity: 0.7;\n  background-color: rgba(255, 255, 255, 0.7);\n  transform-origin: left;\n}\n.Toastify__progress-bar--animated {\n  animation: Toastify__trackProgress linear 1 forwards;\n}\n.Toastify__progress-bar--controlled {\n  transition: transform 0.2s;\n}\n.Toastify__progress-bar--rtl {\n  right: 0;\n  left: initial;\n  transform-origin: right;\n}\n.Toastify__progress-bar--default {\n  background: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);\n}\n.Toastify__progress-bar--dark {\n  background: #bb86fc;\n}\n@keyframes Toastify__bounceInRight {\n  from, 60%, 75%, 90%, to {\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(-25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(-5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@keyframes Toastify__bounceOutRight {\n  20% {\n    opacity: 1;\n    transform: translate3d(-20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(2000px, 0, 0);\n  }\n}\n@keyframes Toastify__bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(-3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(-10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@keyframes Toastify__bounceOutLeft {\n  20% {\n    opacity: 1;\n    transform: translate3d(20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(-2000px, 0, 0);\n  }\n}\n@keyframes Toastify__bounceInUp {\n  from, 60%, 75%, 90%, to {\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(0, 3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  75% {\n    transform: translate3d(0, 10px, 0);\n  }\n  90% {\n    transform: translate3d(0, -5px, 0);\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__bounceOutUp {\n  20% {\n    transform: translate3d(0, -10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, 20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, -2000px, 0);\n  }\n}\n@keyframes Toastify__bounceInDown {\n  from, 60%, 75%, 90%, to {\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(0, -3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, 25px, 0);\n  }\n  75% {\n    transform: translate3d(0, -10px, 0);\n  }\n  90% {\n    transform: translate3d(0, 5px, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@keyframes Toastify__bounceOutDown {\n  20% {\n    transform: translate3d(0, 10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, 2000px, 0);\n  }\n}\n.Toastify__bounce-enter--top-left, .Toastify__bounce-enter--bottom-left {\n  animation-name: Toastify__bounceInLeft;\n}\n.Toastify__bounce-enter--top-right, .Toastify__bounce-enter--bottom-right {\n  animation-name: Toastify__bounceInRight;\n}\n.Toastify__bounce-enter--top-center {\n  animation-name: Toastify__bounceInDown;\n}\n.Toastify__bounce-enter--bottom-center {\n  animation-name: Toastify__bounceInUp;\n}\n\n.Toastify__bounce-exit--top-left, .Toastify__bounce-exit--bottom-left {\n  animation-name: Toastify__bounceOutLeft;\n}\n.Toastify__bounce-exit--top-right, .Toastify__bounce-exit--bottom-right {\n  animation-name: Toastify__bounceOutRight;\n}\n.Toastify__bounce-exit--top-center {\n  animation-name: Toastify__bounceOutUp;\n}\n.Toastify__bounce-exit--bottom-center {\n  animation-name: Toastify__bounceOutDown;\n}\n\n@keyframes Toastify__zoomIn {\n  from {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  50% {\n    opacity: 1;\n  }\n}\n@keyframes Toastify__zoomOut {\n  from {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  to {\n    opacity: 0;\n  }\n}\n.Toastify__zoom-enter {\n  animation-name: Toastify__zoomIn;\n}\n\n.Toastify__zoom-exit {\n  animation-name: Toastify__zoomOut;\n}\n\n@keyframes Toastify__flipIn {\n  from {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    animation-timing-function: ease-in;\n    opacity: 0;\n  }\n  40% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    animation-timing-function: ease-in;\n  }\n  60% {\n    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);\n    opacity: 1;\n  }\n  80% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);\n  }\n  to {\n    transform: perspective(400px);\n  }\n}\n@keyframes Toastify__flipOut {\n  from {\n    transform: perspective(400px);\n  }\n  30% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    opacity: 1;\n  }\n  to {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    opacity: 0;\n  }\n}\n.Toastify__flip-enter {\n  animation-name: Toastify__flipIn;\n}\n\n.Toastify__flip-exit {\n  animation-name: Toastify__flipOut;\n}\n\n@keyframes Toastify__slideInRight {\n  from {\n    transform: translate3d(110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInLeft {\n  from {\n    transform: translate3d(-110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInUp {\n  from {\n    transform: translate3d(0, 110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInDown {\n  from {\n    transform: translate3d(0, -110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideOutRight {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(110%, 0, 0);\n  }\n}\n@keyframes Toastify__slideOutLeft {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(-110%, 0, 0);\n  }\n}\n@keyframes Toastify__slideOutDown {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, 500px, 0);\n  }\n}\n@keyframes Toastify__slideOutUp {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, -500px, 0);\n  }\n}\n.Toastify__slide-enter--top-left, .Toastify__slide-enter--bottom-left {\n  animation-name: Toastify__slideInLeft;\n}\n.Toastify__slide-enter--top-right, .Toastify__slide-enter--bottom-right {\n  animation-name: Toastify__slideInRight;\n}\n.Toastify__slide-enter--top-center {\n  animation-name: Toastify__slideInDown;\n}\n.Toastify__slide-enter--bottom-center {\n  animation-name: Toastify__slideInUp;\n}\n\n.Toastify__slide-exit--top-left, .Toastify__slide-exit--bottom-left {\n  animation-name: Toastify__slideOutLeft;\n}\n.Toastify__slide-exit--top-right, .Toastify__slide-exit--bottom-right {\n  animation-name: Toastify__slideOutRight;\n}\n.Toastify__slide-exit--top-center {\n  animation-name: Toastify__slideOutUp;\n}\n.Toastify__slide-exit--bottom-center {\n  animation-name: Toastify__slideOutDown;\n}\n\n/*# sourceMappingURL=ReactToastify.css.map */", "",{"version":3,"sources":["webpack://./node_modules/react-toastify/scss/_toastContainer.scss","webpack://./node_modules/react-toastify/scss/_variables.scss","webpack://./node_modules/react-toastify/dist/ReactToastify.css","webpack://./node_modules/react-toastify/scss/_toast.scss","webpack://./node_modules/react-toastify/scss/_closeButton.scss","webpack://./node_modules/react-toastify/scss/_progressBar.scss","webpack://./node_modules/react-toastify/scss/animations/_bounce.scss","webpack://./node_modules/react-toastify/scss/animations/_zoom.scss","webpack://./node_modules/react-toastify/scss/animations/_flip.scss","webpack://./node_modules/react-toastify/scss/animations/_slide.scss"],"names":[],"mappings":"AAAA;EACI,aCmBS;EDlBT,4CAAA;EACA,eAAA;EACA,YAAA;EACA,YCJa;EDKb,sBAAA;EACA,WAAA;AECJ;AFAI;EACI,QAAA;EACA,SAAA;AEER;AFAI;EACI,QAAA;EACA,SAAA;EACA,2BAAA;AEER;AFAI;EACI,QAAA;EACA,UAAA;AEER;AFAI;EACI,WAAA;EACA,SAAA;AEER;AFAI;EACI,WAAA;EACA,SAAA;EACA,2BAAA;AEER;AFAI;EACI,WAAA;EACA,UAAA;AEER;;AFEA;EACI;IACI,YAAA;IACA,UAAA;IACA,OAAA;IACA,SAAA;EECN;EFAM;IAGI,MAAA;IACA,wBAAA;EEAV;EFEM;IAGI,SAAA;IACA,wBAAA;EEFV;EFIM;IACE,QAAA;IACA,aAAA;EEFR;AACF;ACvDA;EACI,kBAAA;EACA,gBFCkB;EEAlB,sBAAA;EACA,mBAAA;EACA,YAAA;EACA,kBAAA;EACA,6EAAA;EACA,oBAAA;EAAA,aAAA;EACA,sBAAA;MAAA,8BAAA;EACA,iBFNkB;EEOlB,gBAAA;EACA,uBFOa;EENb,eAAA;EACA,cAAA;ADyDJ;ACxDI;EACI,cAAA;AD0DR;ACxDI;EACI,mBFZQ;EEaR,WFNa;ACgErB;ACxDI;EACI,gBFjBW;EEkBX,WFXgB;ACqExB;ACxDI;EACI,mBFnBQ;AC6EhB;ACxDI;EACI,mBFrBW;AC+EnB;ACxDI;EACI,mBFvBW;ACiFnB;ACxDI;EACI,mBFzBS;ACmFjB;ACxDI;EACI,cAAA;EACA,kBAAA;MAAA,cAAA;AD0DR;;ACtDA;EACE;IACE,gBAAA;EDyDF;AACF;AExGA;EACE,WAAA;EACA,uBAAA;EACA,aAAA;EACA,YAAA;EACA,UAAA;EACA,eAAA;EACA,YAAA;EACA,qBAAA;EACA,0BAAA;MAAA,sBAAA;AF0GF;AExGE;EACE,WAAA;EACA,YAAA;AF0GJ;AEvGE;EACE,kBAAA;EACA,YAAA;EACA,WAAA;AFyGJ;AEtGE;EACE,UAAA;AFwGJ;;AG/HA;EACE;IACE,oBAAA;EHkIF;EGhIA;IACE,oBAAA;EHkIF;AACF;AG/HA;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,WAAA;EACA,WAAA;EACA,aJKW;EIJX,YAAA;EACA,0CAAA;EACA,sBAAA;AHiIF;AG/HE;EACE,oDAAA;AHiIJ;AG9HE;EACE,0BAAA;AHgIJ;AG7HE;EACE,QAAA;EACA,aAAA;EACA,uBAAA;AH+HJ;AG5HE;EACE,2FJnBwB;ACiJ5B;AG3HE;EACE,mBJtBqB;ACmJzB;AIhKA;EACI;IAJA,8DAAA;EJuKF;EI5JE;IACI,UAAA;IACA,oCAAA;EJ8JN;EI5JE;IACI,UAAA;IACA,mCAAA;EJ8JN;EI5JE;IACI,kCAAA;EJ8JN;EI5JE;IACI,kCAAA;EJ8JN;EI5JE;IACI,eAAA;EJ8JN;AACF;AI3JA;EACI;IACI,UAAA;IACA,mCAAA;EJ6JN;EI3JE;IACI,UAAA;IACA,oCAAA;EJ6JN;AACF;AI1JA;EACI;IA1CA,8DAAA;EJuMF;EItJE;IACI,UAAA;IACA,qCAAA;EJwJN;EItJE;IACI,UAAA;IACA,kCAAA;EJwJN;EItJE;IACI,mCAAA;EJwJN;EItJE;IACI,iCAAA;EJwJN;EItJE;IACI,eAAA;EJwJN;AACF;AIrJA;EACI;IACI,UAAA;IACA,kCAAA;EJuJN;EIrJE;IACI,UAAA;IACA,qCAAA;EJuJN;AACF;AIpJA;EACI;IAhFA,8DAAA;EJuOF;EIhJE;IACI,UAAA;IACA,oCAAA;EJkJN;EIhJE;IACI,UAAA;IACA,mCAAA;EJkJN;EIhJE;IACI,kCAAA;EJkJN;EIhJE;IACI,kCAAA;EJkJN;EIhJE;IACI,+BAAA;EJkJN;AACF;AI/IA;EACI;IACI,mCAAA;EJiJN;EI/IE;IAEI,UAAA;IACA,kCAAA;EJgJN;EI9IE;IACI,UAAA;IACA,qCAAA;EJgJN;AACF;AI7IA;EACI;IA1HA,8DAAA;EJ0QF;EIzIE;IACI,UAAA;IACA,qCAAA;EJ2IN;EIzIE;IACI,UAAA;IACA,kCAAA;EJ2IN;EIzIE;IACI,mCAAA;EJ2IN;EIzIE;IACI,iCAAA;EJ2IN;EIzIE;IACI,eAAA;EJ2IN;AACF;AIxIA;EACI;IACI,kCAAA;EJ0IN;EIxIE;IAEI,UAAA;IACA,mCAAA;EJyIN;EIvIE;IACI,UAAA;IACA,oCAAA;EJyIN;AACF;AIrII;EAEI,sCAAA;AJsIR;AIpII;EAEI,uCAAA;AJqIR;AInII;EACI,sCAAA;AJqIR;AInII;EACI,oCAAA;AJqIR;;AIhII;EAEI,uCAAA;AJkIR;AIhII;EAEI,wCAAA;AJiIR;AI/HI;EACI,qCAAA;AJiIR;AI/HI;EACI,uCAAA;AJiIR;;AKnUA;EACI;IACI,UAAA;IACA,iCAAA;ELsUN;EKpUE;IACI,UAAA;ELsUN;AACF;AKnUA;EACI;IACI,UAAA;ELqUN;EKnUE;IACI,UAAA;IACA,iCAAA;ELqUN;EKnUE;IACI,UAAA;ELqUN;AACF;AKlUA;EACI,gCAAA;ALoUJ;;AKjUA;EACI,iCAAA;ALoUJ;;AMhWA;EACI;IACI,sDAAA;IACA,kCAAA;IACA,UAAA;ENmWN;EMjWE;IACI,uDAAA;IACA,kCAAA;ENmWN;EMjWE;IACI,sDAAA;IACA,UAAA;ENmWN;EMjWE;IACI,sDAAA;ENmWN;EMjWE;IACI,6BAAA;ENmWN;AACF;AMhWA;EACI;IACI,6BAAA;ENkWN;EMhWE;IACI,uDAAA;IACA,UAAA;ENkWN;EMhWE;IACI,sDAAA;IACA,UAAA;ENkWN;AACF;AM/VA;EACI,gCAAA;ANiWJ;;AM9VA;EACI,iCAAA;ANiWJ;;AOtYA;EACI;IACI,kCAAA;IACA,mBAAA;EPyYN;EOvYE;IARA,+BAAA;EPkZF;AACF;AOtYA;EACI;IACI,mCAAA;IACA,mBAAA;EPwYN;EOtYE;IAlBA,+BAAA;EP2ZF;AACF;AOrYA;EACI;IACI,kCAAA;IACA,mBAAA;EPuYN;EOrYE;IA5BA,+BAAA;EPoaF;AACF;AOpYA;EACI;IACI,mCAAA;IACA,mBAAA;EPsYN;EOpYE;IAtCA,+BAAA;EP6aF;AACF;AOnYA;EACI;IA5CA,+BAAA;EPkbF;EOnYE;IACI,kBAAA;IACA,kCAAA;EPqYN;AACF;AOlYA;EACI;IAtDA,+BAAA;EP2bF;EOlYE;IACI,kBAAA;IACA,mCAAA;EPoYN;AACF;AOjYA;EACI;IAhEA,+BAAA;EPocF;EOjYE;IACI,kBAAA;IACA,mCAAA;EPmYN;AACF;AOhYA;EACI;IA1EA,+BAAA;EP6cF;EOhYE;IACI,kBAAA;IACA,oCAAA;EPkYN;AACF;AO9XI;EAEI,qCAAA;AP+XR;AO7XI;EAEI,sCAAA;AP8XR;AO5XI;EACI,qCAAA;AP8XR;AO5XI;EACI,mCAAA;AP8XR;;AOzXI;EAEI,sCAAA;AP2XR;AOzXI;EAEI,uCAAA;AP0XR;AOxXI;EACI,oCAAA;AP0XR;AOxXI;EACI,sCAAA;AP0XR;;AAMA,4CAA4C","sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js ***!
+  \************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+module.exports = function cssWithMappingToString(item) {
+  var _item = _slicedToArray(item, 4),
+      content = _item[1],
+      cssMapping = _item[3];
+
+  if (typeof btoa === 'function') {
+    // eslint-disable-next-line no-undef
+    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
+    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+    var sourceMapping = "/*# ".concat(data, " */");
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
+
+  return [content].join('\n');
+};
 
 /***/ }),
 
@@ -31698,6 +31938,2068 @@ function warning(message) {
 
 /***/ }),
 
+/***/ "./node_modules/react-toastify/dist/react-toastify.esm.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/react-toastify.esm.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Bounce": () => /* binding */ Bounce,
+/* harmony export */   "Flip": () => /* binding */ Flip,
+/* harmony export */   "Slide": () => /* binding */ Slide,
+/* harmony export */   "ToastContainer": () => /* binding */ ToastContainer,
+/* harmony export */   "Zoom": () => /* binding */ Zoom,
+/* harmony export */   "collapseToast": () => /* binding */ collapseToast,
+/* harmony export */   "cssTransition": () => /* binding */ cssTransition,
+/* harmony export */   "toast": () => /* binding */ toast,
+/* harmony export */   "useToast": () => /* binding */ useToast,
+/* harmony export */   "useToastContainer": () => /* binding */ useToastContainer
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+
+
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function isNum(v) {
+  return typeof v === 'number' && !isNaN(v);
+}
+function isBool(v) {
+  return typeof v === 'boolean';
+}
+function isStr(v) {
+  return typeof v === 'string';
+}
+function isFn(v) {
+  return typeof v === 'function';
+}
+function parseClassName(v) {
+  return isStr(v) || isFn(v) ? v : null;
+}
+function objectValues(obj) {
+  return Object.keys(obj).map(function (key) {
+    return obj[key];
+  });
+}
+function hasToastId(toastId) {
+  return toastId === 0 || toastId;
+}
+function getAutoCloseDelay(toastAutoClose, containerAutoClose) {
+  return toastAutoClose === false || isNum(toastAutoClose) && toastAutoClose > 0 ? toastAutoClose : containerAutoClose;
+}
+var canUseDom = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function canBeRendered(content) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(content) || isStr(content) || isFn(content) || isNum(content);
+}
+
+var POSITION = {
+  TOP_LEFT: 'top-left',
+  TOP_RIGHT: 'top-right',
+  TOP_CENTER: 'top-center',
+  BOTTOM_LEFT: 'bottom-left',
+  BOTTOM_RIGHT: 'bottom-right',
+  BOTTOM_CENTER: 'bottom-center'
+};
+var TYPE = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  DEFAULT: 'default',
+  DARK: 'dark'
+};
+
+/**
+ * Used to collapse toast after exit animation
+ */
+function collapseToast(node, done, duration
+/* COLLAPSE_DURATION */
+) {
+  if (duration === void 0) {
+    duration = 300;
+  }
+
+  var height = node.scrollHeight;
+  var style = node.style;
+  requestAnimationFrame(function () {
+    style.minHeight = 'initial';
+    style.height = height + 'px';
+    style.transition = "all " + duration + "ms";
+    requestAnimationFrame(function () {
+      style.height = '0';
+      style.padding = '0';
+      style.margin = '0';
+      setTimeout(function () {
+        return done();
+      }, duration);
+    });
+  });
+}
+
+function cssTransition(_ref) {
+  var enter = _ref.enter,
+      exit = _ref.exit,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 750 : _ref$duration,
+      _ref$appendPosition = _ref.appendPosition,
+      appendPosition = _ref$appendPosition === void 0 ? false : _ref$appendPosition,
+      _ref$collapse = _ref.collapse,
+      collapse = _ref$collapse === void 0 ? true : _ref$collapse,
+      _ref$collapseDuration = _ref.collapseDuration,
+      collapseDuration = _ref$collapseDuration === void 0 ? 300 : _ref$collapseDuration;
+  var enterDuration, exitDuration;
+
+  if (Array.isArray(duration) && duration.length === 2) {
+    enterDuration = duration[0];
+    exitDuration = duration[1];
+  } else {
+    enterDuration = exitDuration = duration;
+  }
+
+  return function ToastTransition(_ref2) {
+    var children = _ref2.children,
+        position = _ref2.position,
+        preventExitTransition = _ref2.preventExitTransition,
+        done = _ref2.done,
+        props = _objectWithoutPropertiesLoose(_ref2, ["children", "position", "preventExitTransition", "done"]);
+
+    var enterClassName = appendPosition ? enter + "--" + position : enter;
+    var exitClassName = appendPosition ? exit + "--" + position : exit;
+
+    var onEnter = function onEnter() {
+      var node = props.nodeRef.current;
+
+      if (node) {
+        node.classList.add(enterClassName);
+        node.style.animationFillMode = 'forwards';
+        node.style.animationDuration = enterDuration + "ms";
+      }
+    };
+
+    var onEntered = function onEntered() {
+      var node = props.nodeRef.current;
+
+      if (node) {
+        node.classList.remove(enterClassName);
+        node.style.removeProperty('animationFillMode');
+        node.style.removeProperty('animationDuration');
+      }
+    };
+
+    var onExited = function onExited() {
+      var node = props.nodeRef.current;
+
+      if (node) {
+        node.removeEventListener('animationend', onExited);
+        collapse ? collapseToast(node, done, collapseDuration) : done();
+      }
+    };
+
+    var onExit = function onExit() {
+      var node = props.nodeRef.current;
+
+      if (node) {
+        node.classList.add(exitClassName);
+        node.style.animationFillMode = 'forwards';
+        node.style.animationDuration = exitDuration + "ms";
+        node.addEventListener('animationend', onExited);
+      }
+    };
+
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_transition_group__WEBPACK_IMPORTED_MODULE_4__.default, Object.assign({}, props, {
+      timeout: preventExitTransition ? collapse ? collapseDuration : 50
+      /* DEBOUNCE_DURATION */
+      : {
+        enter: enterDuration,
+        exit: collapse ? exitDuration + collapseDuration : exitDuration + 50
+        /* DEBOUNCE_DURATION */
+
+      },
+      onEnter: onEnter,
+      onEntered: onEntered,
+      onExit: preventExitTransition ? onExited : onExit,
+      unmountOnExit: true
+    }), children);
+  };
+}
+
+var eventManager = {
+  list: /*#__PURE__*/new Map(),
+  emitQueue: /*#__PURE__*/new Map(),
+  on: function on(event, callback) {
+    this.list.has(event) || this.list.set(event, []);
+    this.list.get(event).push(callback);
+    return this;
+  },
+  off: function off(event, callback) {
+    if (callback) {
+      var cb = this.list.get(event).filter(function (cb) {
+        return cb !== callback;
+      });
+      this.list.set(event, cb);
+      return this;
+    }
+
+    this.list["delete"](event);
+    return this;
+  },
+  cancelEmit: function cancelEmit(event) {
+    var timers = this.emitQueue.get(event);
+
+    if (timers) {
+      timers.forEach(function (timer) {
+        return clearTimeout(timer);
+      });
+      this.emitQueue["delete"](event);
+    }
+
+    return this;
+  },
+
+  /**
+   * Enqueue the event at the end of the call stack
+   * Doing so let the user call toast as follow:
+   * toast('1')
+   * toast('2')
+   * toast('3')
+   * Without setTimemout the code above will not work
+   */
+  emit: function emit(event) {
+    var _this = this;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    this.list.has(event) && this.list.get(event).forEach(function (callback) {
+      var timer = setTimeout(function () {
+        // @ts-ignore
+        callback.apply(void 0, args);
+      }, 0);
+      _this.emitQueue.has(event) || _this.emitQueue.set(event, []);
+
+      _this.emitQueue.get(event).push(timer);
+    });
+  }
+};
+
+/**
+ * `useKeeper` is a helper around `useRef`.
+ *
+ * You don't need to access the `.current`property to get the value
+ * If refresh is set to true. The ref will be updated every render
+ */
+
+function useKeeper(arg, refresh) {
+  if (refresh === void 0) {
+    refresh = false;
+  }
+
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(arg);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (refresh) ref.current = arg;
+  });
+  return ref.current;
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'ADD':
+      return [].concat(state, [action.toastId]).filter(function (id) {
+        return id !== action.staleId;
+      });
+
+    case 'REMOVE':
+      return hasToastId(action.toastId) ? state.filter(function (id) {
+        return id !== action.toastId;
+      }) : [];
+  }
+}
+
+function useToastContainer(props) {
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(function (x) {
+    return x + 1;
+  }, 0),
+      forceUpdate = _useReducer[1];
+
+  var _useReducer2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(reducer, []),
+      toast = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  var containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var toastCount = useKeeper(0);
+  var queue = useKeeper([]);
+  var collection = useKeeper({});
+  var instance = useKeeper({
+    toastKey: 1,
+    displayedToast: 0,
+    props: props,
+    containerId: null,
+    isToastActive: isToastActive,
+    getToast: function getToast(id) {
+      return collection[id] || null;
+    }
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.containerId = props.containerId;
+    eventManager.cancelEmit(3
+    /* WillUnmount */
+    ).on(0
+    /* Show */
+    , buildToast).on(1
+    /* Clear */
+    , function (toastId) {
+      return containerRef.current && removeToast(toastId);
+    }).on(5
+    /* ClearWaitingQueue */
+    , clearWaitingQueue).emit(2
+    /* DidMount */
+    , instance);
+    return function () {
+      return eventManager.emit(3
+      /* WillUnmount */
+      , instance);
+    };
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.isToastActive = isToastActive;
+    instance.displayedToast = toast.length;
+    eventManager.emit(4
+    /* Change */
+    , toast.length, props.containerId);
+  }, [toast]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.props = props;
+  });
+
+  function isToastActive(id) {
+    return toast.indexOf(id) !== -1;
+  }
+
+  function clearWaitingQueue(_ref) {
+    var containerId = _ref.containerId;
+    var _instance$props = instance.props,
+        limit = _instance$props.limit,
+        enableMultiContainer = _instance$props.enableMultiContainer;
+
+    if (limit && (!containerId || instance.containerId === containerId && enableMultiContainer)) {
+      toastCount -= queue.length;
+      queue = [];
+    }
+  }
+
+  function removeToast(toastId) {
+    var queueLen = queue.length;
+    toastCount = hasToastId(toastId) ? toastCount - 1 : toastCount - instance.displayedToast;
+    if (toastCount < 0) toastCount = 0;
+
+    if (queueLen > 0) {
+      var freeSlot = hasToastId(toastId) ? 1 : instance.props.limit;
+
+      if (queueLen === 1 || freeSlot === 1) {
+        instance.displayedToast++;
+        dequeueToast();
+      } else {
+        var toDequeue = freeSlot > queueLen ? queueLen : freeSlot;
+        instance.displayedToast = toDequeue;
+
+        for (var i = 0; i < toDequeue; i++) {
+          dequeueToast();
+        }
+      }
+    }
+
+    dispatch({
+      type: 'REMOVE',
+      toastId: toastId
+    });
+  }
+
+  function dequeueToast() {
+    var _queue$shift = queue.shift(),
+        toastContent = _queue$shift.toastContent,
+        toastProps = _queue$shift.toastProps,
+        staleId = _queue$shift.staleId; // ensure that exit transition has been completed, hence the timeout
+
+
+    setTimeout(function () {
+      appendToast(toastContent, toastProps, staleId);
+    }, 500);
+  }
+  /**
+   * check if a container is attached to the dom
+   * check for multi-container, build only if associated
+   * check for duplicate toastId if no update
+   */
+
+
+  function isNotValid(_ref2) {
+    var containerId = _ref2.containerId,
+        toastId = _ref2.toastId,
+        updateId = _ref2.updateId;
+    return !containerRef.current || instance.props.enableMultiContainer && containerId !== instance.props.containerId || instance.isToastActive(toastId) && updateId == null ? true : false;
+  } // this function and all the function called inside needs to rely on ref(`useKeeper`)
+
+
+  function buildToast(content, _ref3) {
+    var delay = _ref3.delay,
+        staleId = _ref3.staleId,
+        options = _objectWithoutPropertiesLoose(_ref3, ["delay", "staleId"]);
+
+    if (!canBeRendered(content) || isNotValid(options)) return;
+    var toastId = options.toastId,
+        updateId = options.updateId;
+    var props = instance.props,
+        isToastActive = instance.isToastActive;
+
+    var closeToast = function closeToast() {
+      return removeToast(toastId);
+    };
+
+    var isNotAnUpdate = !isToastActive(toastId);
+    if (isNotAnUpdate) toastCount++;
+    var toastProps = {
+      toastId: toastId,
+      updateId: updateId,
+      key: options.key || instance.toastKey++,
+      type: options.type,
+      closeToast: closeToast,
+      closeButton: options.closeButton,
+      rtl: props.rtl,
+      position: options.position || props.position,
+      transition: options.transition || props.transition,
+      className: parseClassName(options.className || props.toastClassName),
+      bodyClassName: parseClassName(options.bodyClassName || props.bodyClassName),
+      style: options.style || props.toastStyle,
+      bodyStyle: options.bodyStyle || props.bodyStyle,
+      onClick: options.onClick || props.onClick,
+      pauseOnHover: isBool(options.pauseOnHover) ? options.pauseOnHover : props.pauseOnHover,
+      pauseOnFocusLoss: isBool(options.pauseOnFocusLoss) ? options.pauseOnFocusLoss : props.pauseOnFocusLoss,
+      draggable: isBool(options.draggable) ? options.draggable : props.draggable,
+      draggablePercent: isNum(options.draggablePercent) ? options.draggablePercent : props.draggablePercent,
+      closeOnClick: isBool(options.closeOnClick) ? options.closeOnClick : props.closeOnClick,
+      progressClassName: parseClassName(options.progressClassName || props.progressClassName),
+      progressStyle: options.progressStyle || props.progressStyle,
+      autoClose: getAutoCloseDelay(options.autoClose, props.autoClose),
+      hideProgressBar: isBool(options.hideProgressBar) ? options.hideProgressBar : props.hideProgressBar,
+      progress: options.progress,
+      role: isStr(options.role) ? options.role : props.role,
+      deleteToast: function deleteToast() {
+        removeFromCollection(toastId);
+      }
+    };
+    if (isFn(options.onOpen)) toastProps.onOpen = options.onOpen;
+    if (isFn(options.onClose)) toastProps.onClose = options.onClose;
+    var closeButton = props.closeButton;
+
+    if (options.closeButton === false || canBeRendered(options.closeButton)) {
+      closeButton = options.closeButton;
+    } else if (options.closeButton === true) {
+      closeButton = canBeRendered(props.closeButton) ? props.closeButton : true;
+    }
+
+    toastProps.closeButton = closeButton;
+    var toastContent = content;
+
+    if ((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(content) && !isStr(content.type)) {
+      toastContent = (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(content, {
+        closeToast: closeToast,
+        toastProps: toastProps
+      });
+    } else if (isFn(content)) {
+      toastContent = content({
+        closeToast: closeToast,
+        toastProps: toastProps
+      });
+    } // not handling limit + delay by design. Waiting for user feedback first
+
+
+    if (props.limit && props.limit > 0 && toastCount > props.limit && isNotAnUpdate) {
+      queue.push({
+        toastContent: toastContent,
+        toastProps: toastProps,
+        staleId: staleId
+      });
+    } else if (isNum(delay) && delay > 0) {
+      setTimeout(function () {
+        appendToast(toastContent, toastProps, staleId);
+      }, delay);
+    } else {
+      appendToast(toastContent, toastProps, staleId);
+    }
+  }
+
+  function appendToast(content, toastProps, staleId) {
+    var toastId = toastProps.toastId;
+    collection[toastId] = {
+      content: content,
+      props: toastProps
+    };
+    dispatch({
+      type: 'ADD',
+      toastId: toastId,
+      staleId: staleId
+    });
+  }
+
+  function removeFromCollection(toastId) {
+    delete collection[toastId];
+    forceUpdate();
+  }
+
+  function getToastToRender(cb) {
+    var toastToRender = {};
+    var toastList = props.newestOnTop ? Object.keys(collection).reverse() : Object.keys(collection);
+
+    for (var i = 0; i < toastList.length; i++) {
+      var _toast = collection[toastList[i]];
+      var position = _toast.props.position;
+      toastToRender[position] || (toastToRender[position] = []);
+      toastToRender[position].push(_toast);
+    }
+
+    return Object.keys(toastToRender).map(function (p) {
+      return cb(p, toastToRender[p]);
+    });
+  }
+
+  return {
+    getToastToRender: getToastToRender,
+    collection: collection,
+    containerRef: containerRef,
+    isToastActive: isToastActive
+  };
+}
+
+function getX(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientX : e.clientX;
+}
+
+function getY(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientY : e.clientY;
+}
+
+function useToast(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      isRunning = _useState[0],
+      setIsRunning = _useState[1];
+
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      preventExitTransition = _useState2[0],
+      setPreventExitTransition = _useState2[1];
+
+  var toastRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var drag = useKeeper({
+    start: 0,
+    x: 0,
+    y: 0,
+    deltaX: 0,
+    removalDistance: 0,
+    canCloseOnClick: true,
+    canDrag: false,
+    boundingRect: null
+  });
+  var syncProps = useKeeper(props, true);
+  var autoClose = props.autoClose,
+      pauseOnHover = props.pauseOnHover,
+      closeToast = props.closeToast,
+      onClick = props.onClick,
+      closeOnClick = props.closeOnClick;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isFn(props.onOpen)) props.onOpen((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(props.children) && props.children.props);
+    return function () {
+      if (isFn(syncProps.onClose)) syncProps.onClose((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(syncProps.children) && syncProps.children.props);
+    };
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    props.draggable && bindDragEvents();
+    return function () {
+      props.draggable && unbindDragEvents();
+    };
+  }, [props.draggable]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    props.pauseOnFocusLoss && bindFocusEvents();
+    return function () {
+      props.pauseOnFocusLoss && unbindFocusEvents();
+    };
+  }, [props.pauseOnFocusLoss]);
+
+  function onDragStart(e) {
+    var toast = toastRef.current;
+    drag.canCloseOnClick = true;
+    drag.canDrag = true;
+    drag.boundingRect = toast.getBoundingClientRect();
+    toast.style.transition = '';
+    drag.start = drag.x = getX(e.nativeEvent);
+    drag.removalDistance = toast.offsetWidth * (props.draggablePercent / 100);
+  }
+
+  function onDragTransitionEnd() {
+    if (drag.boundingRect) {
+      var _drag$boundingRect = drag.boundingRect,
+          top = _drag$boundingRect.top,
+          bottom = _drag$boundingRect.bottom,
+          left = _drag$boundingRect.left,
+          right = _drag$boundingRect.right;
+
+      if (props.pauseOnHover && drag.x >= left && drag.x <= right && drag.y >= top && drag.y <= bottom) {
+        pauseToast();
+      } else {
+        playToast();
+      }
+    }
+  }
+
+  function playToast() {
+    setIsRunning(true);
+  }
+
+  function pauseToast() {
+    setIsRunning(false);
+  }
+
+  function bindFocusEvents() {
+    window.addEventListener('focus', playToast);
+    window.addEventListener('blur', pauseToast);
+  }
+
+  function unbindFocusEvents() {
+    window.removeEventListener('focus', playToast);
+    window.removeEventListener('blur', pauseToast);
+  }
+
+  function bindDragEvents() {
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+    document.addEventListener('touchmove', onDragMove);
+    document.addEventListener('touchend', onDragEnd);
+  }
+
+  function unbindDragEvents() {
+    document.removeEventListener('mousemove', onDragMove);
+    document.removeEventListener('mouseup', onDragEnd);
+    document.removeEventListener('touchmove', onDragMove);
+    document.removeEventListener('touchend', onDragEnd);
+  }
+
+  function onDragMove(e) {
+    e.preventDefault();
+    var toast = toastRef.current;
+
+    if (drag.canDrag) {
+      if (isRunning) pauseToast();
+      drag.x = getX(e);
+      drag.deltaX = drag.x - drag.start;
+      drag.y = getY(e); // prevent false positif during a toast click
+
+      if (drag.start !== drag.x) drag.canCloseOnClick = false;
+      toast.style.transform = "translateX(" + drag.deltaX + "px)";
+      toast.style.opacity = "" + (1 - Math.abs(drag.deltaX / drag.removalDistance));
+    }
+  }
+
+  function onDragEnd() {
+    var toast = toastRef.current;
+
+    if (drag.canDrag) {
+      drag.canDrag = false;
+
+      if (Math.abs(drag.deltaX) > drag.removalDistance) {
+        setPreventExitTransition(true);
+        props.closeToast();
+        return;
+      }
+
+      toast.style.transition = 'transform 0.2s, opacity 0.2s';
+      toast.style.transform = 'translateX(0)';
+      toast.style.opacity = '1';
+    }
+  }
+
+  var eventHandlers = {
+    onMouseDown: onDragStart,
+    onTouchStart: onDragStart,
+    onMouseUp: onDragTransitionEnd,
+    onTouchEnd: onDragTransitionEnd
+  };
+
+  if (autoClose && pauseOnHover) {
+    eventHandlers.onMouseEnter = pauseToast;
+    eventHandlers.onMouseLeave = playToast;
+  } // prevent toast from closing when user drags the toast
+
+
+  if (closeOnClick) {
+    eventHandlers.onClick = function (e) {
+      onClick && onClick(e);
+      drag.canCloseOnClick && closeToast();
+    };
+  }
+
+  return {
+    playToast: playToast,
+    pauseToast: pauseToast,
+    isRunning: isRunning,
+    preventExitTransition: preventExitTransition,
+    toastRef: toastRef,
+    eventHandlers: eventHandlers
+  };
+}
+
+function CloseButton(_ref) {
+  var closeToast = _ref.closeToast,
+      type = _ref.type,
+      _ref$ariaLabel = _ref.ariaLabel,
+      ariaLabel = _ref$ariaLabel === void 0 ? 'close' : _ref$ariaLabel;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "Toastify"
+    /* CSS_NAMESPACE */
+    + "__close-button " + "Toastify"
+    /* CSS_NAMESPACE */
+    + "__close-button--" + type,
+    type: "button",
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      closeToast(e);
+    },
+    "aria-label": ariaLabel
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    "aria-hidden": "true",
+    viewBox: "0 0 14 16"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fillRule: "evenodd",
+    d: "M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
+  })));
+}
+
+function ProgressBar(_ref) {
+  var _ref2, _animationEvent;
+
+  var delay = _ref.delay,
+      isRunning = _ref.isRunning,
+      closeToast = _ref.closeToast,
+      type = _ref.type,
+      hide = _ref.hide,
+      className = _ref.className,
+      userStyle = _ref.style,
+      controlledProgress = _ref.controlledProgress,
+      progress = _ref.progress,
+      rtl = _ref.rtl,
+      isIn = _ref.isIn;
+
+  var style = _extends({}, userStyle, {
+    animationDuration: delay + "ms",
+    animationPlayState: isRunning ? 'running' : 'paused',
+    opacity: hide ? 0 : 1
+  });
+
+  if (controlledProgress) style.transform = "scaleX(" + progress + ")";
+  var defaultClassArr = ["Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar", controlledProgress ? "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--controlled" : "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--animated", "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--" + type, (_ref2 = {}, _ref2["Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--rtl"] = rtl, _ref2)];
+  var classNames = isFn(className) ? className({
+    rtl: rtl,
+    type: type,
+    defaultClassName: clsx__WEBPACK_IMPORTED_MODULE_1__.default.apply(void 0, defaultClassArr)
+  }) : clsx__WEBPACK_IMPORTED_MODULE_1__.default.apply(void 0, [].concat(defaultClassArr, [className])); // 🧐 controlledProgress is derived from progress
+  // so if controlledProgress is set
+  // it means that this is also the case for progress
+
+  var animationEvent = (_animationEvent = {}, _animationEvent[controlledProgress && progress >= 1 ? 'onTransitionEnd' : 'onAnimationEnd'] = controlledProgress && progress < 1 ? null : function () {
+    isIn && closeToast();
+  }, _animationEvent);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({
+    className: classNames,
+    style: style
+  }, animationEvent));
+}
+ProgressBar.defaultProps = {
+  type: TYPE.DEFAULT,
+  hide: false
+};
+
+var Toast = function Toast(props) {
+  var _ref;
+
+  var _useToast = useToast(props),
+      isRunning = _useToast.isRunning,
+      preventExitTransition = _useToast.preventExitTransition,
+      toastRef = _useToast.toastRef,
+      eventHandlers = _useToast.eventHandlers;
+
+  var closeButton = props.closeButton,
+      children = props.children,
+      autoClose = props.autoClose,
+      onClick = props.onClick,
+      type = props.type,
+      hideProgressBar = props.hideProgressBar,
+      closeToast = props.closeToast,
+      Transition = props.transition,
+      position = props.position,
+      className = props.className,
+      style = props.style,
+      bodyClassName = props.bodyClassName,
+      bodyStyle = props.bodyStyle,
+      progressClassName = props.progressClassName,
+      progressStyle = props.progressStyle,
+      updateId = props.updateId,
+      role = props.role,
+      progress = props.progress,
+      rtl = props.rtl,
+      toastId = props.toastId,
+      deleteToast = props.deleteToast;
+  var defaultClassArr = ["Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast", "Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast--" + type, (_ref = {}, _ref["Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast--rtl"] = rtl, _ref)];
+  var cssClasses = isFn(className) ? className({
+    rtl: rtl,
+    position: position,
+    type: type,
+    defaultClassName: clsx__WEBPACK_IMPORTED_MODULE_1__.default.apply(void 0, defaultClassArr)
+  }) : clsx__WEBPACK_IMPORTED_MODULE_1__.default.apply(void 0, [].concat(defaultClassArr, [className]));
+  var controlledProgress = !!progress;
+
+  function renderCloseButton(closeButton) {
+    if (!closeButton) return;
+    var props = {
+      closeToast: closeToast,
+      type: type
+    };
+    if (isFn(closeButton)) return closeButton(props);
+    if ((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(closeButton)) return (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(closeButton, props);
+  }
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Transition, {
+    "in": props["in"],
+    appear: true,
+    done: deleteToast,
+    position: position,
+    preventExitTransition: preventExitTransition,
+    nodeRef: toastRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({
+    id: toastId,
+    onClick: onClick,
+    className: cssClasses || undefined
+  }, eventHandlers, {
+    style: style,
+    ref: toastRef
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({}, props["in"] && {
+    role: role
+  }, {
+    className: isFn(bodyClassName) ? bodyClassName({
+      type: type
+    }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__.default)("Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-body", bodyClassName),
+    style: bodyStyle
+  }), children), renderCloseButton(closeButton), (autoClose || controlledProgress) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ProgressBar, Object.assign({}, updateId && !controlledProgress ? {
+    key: "pb-" + updateId
+  } : {}, {
+    rtl: rtl,
+    delay: autoClose,
+    isRunning: isRunning,
+    isIn: props["in"],
+    closeToast: closeToast,
+    hide: hideProgressBar,
+    type: type,
+    style: progressStyle,
+    className: progressClassName,
+    controlledProgress: controlledProgress,
+    progress: progress
+  }))));
+};
+
+var Bounce = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__bounce-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__bounce-exit",
+  appendPosition: true
+});
+var Slide = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__slide-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__slide-exit",
+  duration: [450, 750],
+  appendPosition: true
+});
+var Zoom = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__zoom-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__zoom-exit"
+});
+var Flip = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__flip-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "__flip-exit"
+});
+
+var ToastPositioner = function ToastPositioner(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      style = _ref.style,
+      rest = _objectWithoutPropertiesLoose(_ref, ["children", "className", "style"]);
+
+  // Monkey patch react-transition-group
+  // As exit transition is broken with strict mode
+  delete rest["in"];
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: className,
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0__.Children.map(children, function (child) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(child, rest);
+  }));
+};
+
+var ToastContainer = function ToastContainer(props) {
+  var _useToastContainer = useToastContainer(props),
+      getToastToRender = _useToastContainer.getToastToRender,
+      containerRef = _useToastContainer.containerRef,
+      isToastActive = _useToastContainer.isToastActive;
+
+  var className = props.className,
+      style = props.style,
+      rtl = props.rtl,
+      containerId = props.containerId;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: containerRef,
+    className: "Toastify"
+    /* CSS_NAMESPACE */
+    ,
+    id: containerId
+  }, getToastToRender(function (position, toastList) {
+    var _cx, _cx2;
+
+    var swag = {
+      className: isFn(className) ? className({
+        position: position,
+        rtl: rtl,
+        defaultClassName: (0,clsx__WEBPACK_IMPORTED_MODULE_1__.default)("Toastify"
+        /* CSS_NAMESPACE */
+        + "__toast-container", "Toastify"
+        /* CSS_NAMESPACE */
+        + "__toast-container--" + position, (_cx = {}, _cx["Toastify"
+        /* CSS_NAMESPACE */
+        + "__toast-container--rtl"] = rtl, _cx))
+      }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__.default)("Toastify"
+      /* CSS_NAMESPACE */
+      + "__toast-container", "Toastify"
+      /* CSS_NAMESPACE */
+      + "__toast-container--" + position, (_cx2 = {}, _cx2["Toastify"
+      /* CSS_NAMESPACE */
+      + "__toast-container--rtl"] = rtl, _cx2), parseClassName(className)),
+      style: toastList.length === 0 ? _extends({}, style, {
+        pointerEvents: 'none'
+      }) : _extends({}, style)
+    };
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToastPositioner, Object.assign({}, swag, {
+      key: "container-" + position
+    }), toastList.map(function (_ref) {
+      var content = _ref.content,
+          toastProps = _ref.props;
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Toast, Object.assign({}, toastProps, {
+        "in": isToastActive(toastProps.toastId),
+        key: "toast-" + toastProps.key,
+        closeButton: toastProps.closeButton === true ? CloseButton : toastProps.closeButton
+      }), content);
+    }));
+  }));
+};
+
+if (true) {
+  // @ts-ignore
+  ToastContainer.propTypes = {
+    // @ts-ignore
+    position: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOf( /*#__PURE__*/objectValues(POSITION)),
+    // @ts-ignore
+    autoClose: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number)]),
+    // @ts-ignore
+    closeButton: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().node), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)]),
+    hideProgressBar: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    pauseOnHover: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    closeOnClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    newestOnTop: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    className: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().any),
+    style: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().object),
+    toastClassName: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)]),
+    bodyClassName: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)]),
+    progressClassName: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)]),
+    progressStyle: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().object),
+    transition: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+    rtl: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    draggable: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    draggablePercent: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number),
+    pauseOnFocusLoss: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    enableMultiContainer: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+    containerId: /*#__PURE__*/prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().number)]),
+    role: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
+    onClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+  };
+}
+
+ToastContainer.defaultProps = {
+  position: POSITION.TOP_RIGHT,
+  transition: Bounce,
+  rtl: false,
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeButton: CloseButton,
+  pauseOnHover: true,
+  pauseOnFocusLoss: true,
+  closeOnClick: true,
+  newestOnTop: false,
+  draggable: true,
+  draggablePercent: 80,
+  role: 'alert'
+};
+
+var containers = /*#__PURE__*/new Map();
+var latestInstance;
+var containerDomNode;
+var containerConfig;
+var queue = [];
+var lazy = false;
+/**
+ * Check whether any container is currently mounted in the DOM
+ */
+
+function isAnyContainerMounted() {
+  return containers.size > 0;
+}
+/**
+ * Get the container by id. Returns the last container declared when no id is given.
+ */
+
+
+function getContainer(containerId) {
+  if (!isAnyContainerMounted()) return null;
+  return containers.get(!containerId ? latestInstance : containerId);
+}
+/**
+ * Get the toast by id, given it's in the DOM, otherwise returns null
+ */
+
+
+function getToast(toastId, _ref) {
+  var containerId = _ref.containerId;
+  var container = getContainer(containerId);
+  if (!container) return null;
+  return container.getToast(toastId);
+}
+/**
+ * Generate a random toastId
+ */
+
+
+function generateToastId() {
+  return (Math.random().toString(36) + Date.now().toString(36)).substr(2, 10);
+}
+/**
+ * Generate a toastId or use the one provided
+ */
+
+
+function getToastId(options) {
+  if (options && (isStr(options.toastId) || isNum(options.toastId))) {
+    return options.toastId;
+  }
+
+  return generateToastId();
+}
+/**
+ * If the container is not mounted, the toast is enqueued and
+ * the container lazy mounted
+ */
+
+
+function dispatchToast(content, options) {
+  if (isAnyContainerMounted()) {
+    eventManager.emit(0
+    /* Show */
+    , content, options);
+  } else {
+    queue.push({
+      content: content,
+      options: options
+    });
+
+    if (lazy && canUseDom) {
+      lazy = false;
+      containerDomNode = document.createElement('div');
+      document.body.appendChild(containerDomNode);
+      (0,react_dom__WEBPACK_IMPORTED_MODULE_3__.render)((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToastContainer, Object.assign({}, containerConfig)), containerDomNode);
+    }
+  }
+
+  return options.toastId;
+}
+/**
+ * Merge provided options with the defaults settings and generate the toastId
+ */
+
+
+function mergeOptions(type, options) {
+  return _extends({}, options, {
+    type: options && options.type || type,
+    toastId: getToastId(options)
+  });
+}
+
+var toast = function toast(content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.DEFAULT, options));
+};
+
+toast.success = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.SUCCESS, options));
+};
+
+toast.info = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.INFO, options));
+};
+
+toast.error = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.ERROR, options));
+};
+
+toast.warning = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.WARNING, options));
+};
+
+toast.dark = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.DARK, options));
+};
+/**
+ * Maybe I should remove warning in favor of warn, I don't know
+ */
+
+
+toast.warn = toast.warning;
+/**
+ * Remove toast programmaticaly
+ */
+
+toast.dismiss = function (id) {
+  return isAnyContainerMounted() && eventManager.emit(1
+  /* Clear */
+  , id);
+};
+/**
+ * Clear waiting queue when limit is used
+ */
+
+
+toast.clearWaitingQueue = function (params) {
+  if (params === void 0) {
+    params = {};
+  }
+
+  return isAnyContainerMounted() && eventManager.emit(5
+  /* ClearWaitingQueue */
+  , params);
+};
+/**
+ * return true if one container is displaying the toast
+ */
+
+
+toast.isActive = function (id) {
+  var isToastActive = false;
+  containers.forEach(function (container) {
+    if (container.isToastActive && container.isToastActive(id)) {
+      isToastActive = true;
+    }
+  });
+  return isToastActive;
+};
+
+toast.update = function (toastId, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  // if you call toast and toast.update directly nothing will be displayed
+  // this is why I defered the update
+  setTimeout(function () {
+    var toast = getToast(toastId, options);
+
+    if (toast) {
+      var oldOptions = toast.props,
+          oldContent = toast.content;
+
+      var nextOptions = _extends({}, oldOptions, options, {
+        toastId: options.toastId || toastId,
+        updateId: generateToastId()
+      });
+
+      if (nextOptions.toastId !== toastId) nextOptions.staleId = toastId;
+      var content = typeof nextOptions.render !== 'undefined' ? nextOptions.render : oldContent;
+      delete nextOptions.render;
+      dispatchToast(content, nextOptions);
+    }
+  }, 0);
+};
+/**
+ * Used for controlled progress bar.
+ */
+
+
+toast.done = function (id) {
+  toast.update(id, {
+    progress: 1
+  });
+};
+/**
+ * Track changes. The callback get the number of toast displayed
+ *
+ */
+
+
+toast.onChange = function (callback) {
+  if (isFn(callback)) {
+    eventManager.on(4
+    /* Change */
+    , callback);
+  }
+
+  return function () {
+    isFn(callback) && eventManager.off(4
+    /* Change */
+    , callback);
+  };
+};
+/**
+ * Configure the ToastContainer when lazy mounted
+ */
+
+
+toast.configure = function (config) {
+  if (config === void 0) {
+    config = {};
+  }
+
+  lazy = true;
+  containerConfig = config;
+};
+
+toast.POSITION = POSITION;
+toast.TYPE = TYPE;
+/**
+ * Wait until the ToastContainer is mounted to dispatch the toast
+ * and attach isActive method
+ */
+
+eventManager.on(2
+/* DidMount */
+, function (containerInstance) {
+  latestInstance = containerInstance.containerId || containerInstance;
+  containers.set(latestInstance, containerInstance);
+  queue.forEach(function (item) {
+    eventManager.emit(0
+    /* Show */
+    , item.content, item.options);
+  });
+  queue = [];
+}).on(3
+/* WillUnmount */
+, function (containerInstance) {
+  containers["delete"](containerInstance.containerId || containerInstance);
+
+  if (containers.size === 0) {
+    eventManager.off(0
+    /* Show */
+    ).off(1
+    /* Clear */
+    ).off(5
+    /* ClearWaitingQueue */
+    );
+  }
+
+  if (canUseDom && containerDomNode) {
+    document.body.removeChild(containerDomNode);
+  }
+});
+
+
+//# sourceMappingURL=react-toastify.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/Transition.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/Transition.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UNMOUNTED": () => /* binding */ UNMOUNTED,
+/* harmony export */   "EXITED": () => /* binding */ EXITED,
+/* harmony export */   "ENTERING": () => /* binding */ ENTERING,
+/* harmony export */   "ENTERED": () => /* binding */ ENTERED,
+/* harmony export */   "EXITING": () => /* binding */ EXITING,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
+
+
+
+
+
+
+
+
+var UNMOUNTED = 'unmounted';
+var EXITED = 'exited';
+var ENTERING = 'entering';
+var ENTERED = 'entered';
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__.default)(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  } // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+  ;
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(mounting);
+      } else {
+        this.performExit();
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+
+    var _ref2 = this.props.nodeRef ? [appearing] : [react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this), appearing],
+        maybeNode = _ref2[0],
+        maybeAppearing = _ref2[1];
+
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onEnter(maybeNode, maybeAppearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(maybeNode, maybeAppearing);
+
+      _this2.onTransitionEnd(enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(maybeNode, maybeAppearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit() {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts();
+    var maybeNode = this.props.nodeRef ? undefined : react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this); // no exit animation skip right to EXITED
+
+    if (!exit || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onExit(maybeNode);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(maybeNode);
+
+      _this3.onTransitionEnd(timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(maybeNode);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+    this.setNextCallback(handler);
+    var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(this);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+          maybeNode = _ref3[0],
+          maybeNextCallback = _ref3[1];
+
+      this.props.addEndListener(maybeNode, maybeNextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        _in = _this$props.in,
+        _mountOnEnter = _this$props.mountOnEnter,
+        _unmountOnExit = _this$props.unmountOnExit,
+        _appear = _this$props.appear,
+        _enter = _this$props.enter,
+        _exit = _this$props.exit,
+        _timeout = _this$props.timeout,
+        _addEndListener = _this$props.addEndListener,
+        _onEnter = _this$props.onEnter,
+        _onEntering = _this$props.onEntering,
+        _onEntered = _this$props.onEntered,
+        _onExit = _this$props.onExit,
+        _onExiting = _this$props.onExiting,
+        _onExited = _this$props.onExited,
+        _nodeRef = _this$props.nodeRef,
+        childProps = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__.default)(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+
+    return (
+      /*#__PURE__*/
+      // allows for nested Transitions
+      react__WEBPACK_IMPORTED_MODULE_3__.createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+        value: null
+      }, typeof children === 'function' ? children(status, childProps) : react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(react__WEBPACK_IMPORTED_MODULE_3__.Children.only(children), childProps))
+    );
+  };
+
+  return Transition;
+}(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default;
+Transition.propTypes =  true ? {
+  /**
+   * A React reference to DOM element that need to transition:
+   * https://stackoverflow.com/a/51127130/4671932
+   *
+   *   - When `nodeRef` prop is used, `node` is not passed to callback functions
+   *      (e.g. `onEnter`) because user already has direct access to the node.
+   *   - When changing `key` prop of `Transition` in a `TransitionGroup` a new
+   *     `nodeRef` need to be provided to `Transition` with changed `key` prop
+   *     (see
+   *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
+   */
+  nodeRef: prop_types__WEBPACK_IMPORTED_MODULE_2___default().shape({
+    current: typeof Element === 'undefined' ? (prop_types__WEBPACK_IMPORTED_MODULE_2___default().any) : prop_types__WEBPACK_IMPORTED_MODULE_2___default().instanceOf(Element)
+  }),
+
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func.isRequired), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().element.isRequired)]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component does not perform the enter transition when
+   * it first mounts, regardless of the value of `in`. If you want this
+   * behavior, set both `appear` and `in` to `true`.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. Timeouts are still used as a fallback if provided.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+} : 0; // Name the function so it is clearer in the documentation
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = UNMOUNTED;
+Transition.EXITED = EXITED;
+Transition.ENTERING = ENTERING;
+Transition.ENTERED = ENTERED;
+Transition.EXITING = EXITING;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transition);
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/TransitionGroupContext.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0__.createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/config.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/config.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  disabled: false
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/PropTypes.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/PropTypes.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "timeoutsShape": () => /* binding */ timeoutsShape,
+/* harmony export */   "classNamesShape": () => /* binding */ classNamesShape
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var timeoutsShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number)
+}).isRequired]) : 0;
+var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().string), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  active: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+}), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+})]) : 0;
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -36060,6 +38362,315 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-toastify/dist/ReactToastify.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js!./ReactToastify.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/react-toastify/dist/ReactToastify.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
 
 /***/ }),
 
