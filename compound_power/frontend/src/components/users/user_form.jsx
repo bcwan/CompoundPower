@@ -16,7 +16,9 @@ class UserForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+    const { name, username, email } = this.state;
+    const user = { name, username, email };
+    this.props.addUser(user);
   }
 
   render() {

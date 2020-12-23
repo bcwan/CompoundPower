@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import UserForm from './user_form';
+import UserFormContainer from './user_form_container';
 import UsersIndexContainer from './users_index_container';
 
 export default function Dashboard() {
   return (
     <Fragment>
-      <UserForm />
+      <UserFormContainer />
       <UsersIndexContainer />
     </Fragment>
   )
