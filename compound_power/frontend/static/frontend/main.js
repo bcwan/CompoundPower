@@ -1957,7 +1957,8 @@ var removeUser = function removeUser(userId) {
     type: REMOVE_USER,
     userId: userId
   };
-};
+}; // 
+
 
 var getErrors = function getErrors(errors) {
   return {
@@ -1995,7 +1996,11 @@ var postUser = function postUser(user) {
       notifySuccess('Add user successfully!');
       dispatch(addUser(user));
     })["catch"](function (error) {
-      return console.log(error.response.data);
+      var errorsArr = error.response.data;
+
+      for (var tag in errorsArr) {
+        notifyFailure("".concat(tag, ": ").concat(errorsArr[tag]));
+      }
     });
   };
 };
@@ -2166,21 +2171,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ Dashboard
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _user_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_form_container */ "./compound_power/frontend/src/components/users/user_form_container.js");
+/* harmony import */ var _users_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_form_container */ "./compound_power/frontend/src/components/users/users_form_container.js");
 /* harmony import */ var _users_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_index_container */ "./compound_power/frontend/src/components/users/users_index_container.js");
 
 
 
 function Dashboard() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_container__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_form_container__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
 }
 
 /***/ }),
 
-/***/ "./compound_power/frontend/src/components/users/user_form.jsx":
-/*!********************************************************************!*\
-  !*** ./compound_power/frontend/src/components/users/user_form.jsx ***!
-  \********************************************************************/
+/***/ "./compound_power/frontend/src/components/users/users_form.jsx":
+/*!*********************************************************************!*\
+  !*** ./compound_power/frontend/src/components/users/users_form.jsx ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2215,15 +2220,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var UserForm = /*#__PURE__*/function (_Component) {
-  _inherits(UserForm, _Component);
+var UsersForm = /*#__PURE__*/function (_Component) {
+  _inherits(UsersForm, _Component);
 
-  var _super = _createSuper(UserForm);
+  var _super = _createSuper(UsersForm);
 
-  function UserForm(props) {
+  function UsersForm(props) {
     var _this;
 
-    _classCallCheck(this, UserForm);
+    _classCallCheck(this, UsersForm);
 
     _this = _super.call(this, props);
 
@@ -2254,7 +2259,7 @@ var UserForm = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(UserForm, [{
+  _createClass(UsersForm, [{
     key: "render",
     value: function render() {
       var _this$state2 = this.state,
@@ -2298,17 +2303,17 @@ var UserForm = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return UserForm;
+  return UsersForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UsersForm);
 
 /***/ }),
 
-/***/ "./compound_power/frontend/src/components/users/user_form_container.js":
-/*!*****************************************************************************!*\
-  !*** ./compound_power/frontend/src/components/users/user_form_container.js ***!
-  \*****************************************************************************/
+/***/ "./compound_power/frontend/src/components/users/users_form_container.js":
+/*!******************************************************************************!*\
+  !*** ./compound_power/frontend/src/components/users/users_form_container.js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2317,7 +2322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _user_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_form */ "./compound_power/frontend/src/components/users/user_form.jsx");
+/* harmony import */ var _users_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_form */ "./compound_power/frontend/src/components/users/users_form.jsx");
 /* harmony import */ var _actions_users_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/users_actions */ "./compound_power/frontend/src/actions/users_actions.js");
 
 
@@ -2335,7 +2340,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_user_form__WEBPACK_IMPORTED_MODULE_1__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_users_form__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 

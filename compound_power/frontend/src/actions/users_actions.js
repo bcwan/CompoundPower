@@ -45,6 +45,7 @@ const removeUser = userId => ({
   userId
 })
 
+// 
 const getErrors = (errors) => ({
   type: GET_ERRORS,
   errors
@@ -77,5 +78,10 @@ export const postUser = (user) => dispatch => {
       notifySuccess('Add user successfully!')
       dispatch(addUser(user))
     })
-    .catch(error => console.log(error.response.data));
+    .catch(error => {
+      let errorsArr = error.response.data; 
+      for (const tag in errorsArr) {
+        notifyFailure(`${tag}: ${errorsArr[tag]}`);
+      }
+    });
 }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import UserForm from './user_form';
+import UsersForm from './users_form';
 
 import {
   postUser
@@ -13,4 +13,4 @@ const mDTP = (dispatch) => ({
   postUser: (user) => dispatch(postUser(user)),
 });
 
-export default connect(mSTP, mDTP)(UserForm);
+export default connect(mSTP, mDTP)(UsersForm);
