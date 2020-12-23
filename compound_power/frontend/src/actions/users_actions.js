@@ -1,28 +1,13 @@
 import axios from 'axios';
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// TOAST
+import { notifyDeletion, notifySuccess, notifyFailure } from '../toast/react_toast'
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER = 'GET_USER';
 export const REMOVE_USER = 'REMOVE_USER'
 export const ADD_USER = 'ADD_USER';
 export const GET_ERRORS = 'GET_ERRORS';
-
-toast.configure();
-
-// TOAST MESSAGES
-const notifySuccess = (message) => {
-  toast.success(message);
-}
-
-const notifyFailure = (message) => {
-  toast.error(message);
-}
-
-const notifyDeletion = (message) => {
-  toast.warning(message);
-}
 
 // ACTIONS
 const getAllUsers = users => ({
@@ -58,7 +43,10 @@ export const fetchAllUsers = () => dispatch => {
       notifySuccess('Load users!')
       dispatch(getAllUsers(users))
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      let errorsArr = error.response.data;
+      dispatch(getErrors(errorsArr)); 
+    });
 }
 
 // DELETE USER
@@ -68,7 +56,10 @@ export const deleteUser = (id) => dispatch => {
       notifyDeletion('Deleted user successfully!')
       dispatch(removeUser(id))
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      let errorsArr = error.response.data;
+      dispatch(getErrors(errorsArr)); 
+    });
 }
 
 // POST USER

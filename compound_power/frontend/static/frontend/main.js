@@ -1906,30 +1906,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
-
+/* harmony import */ var _toast_react_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../toast/react_toast */ "./compound_power/frontend/src/toast/react_toast.js");
+ // TOAST
 
 
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
 var REMOVE_USER = 'REMOVE_USER';
 var ADD_USER = 'ADD_USER';
-var GET_ERRORS = 'GET_ERRORS';
-react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.configure(); // TOAST MESSAGES
-
-var notifySuccess = function notifySuccess(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success(message);
-};
-
-var notifyFailure = function notifyFailure(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error(message);
-};
-
-var notifyDeletion = function notifyDeletion(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning(message);
-}; // ACTIONS
-
+var GET_ERRORS = 'GET_ERRORS'; // ACTIONS
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1971,10 +1956,11 @@ var getErrors = function getErrors(errors) {
 var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (users) {
-      notifySuccess('Load users!');
+      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifySuccess)('Load users!');
       dispatch(getAllUsers(users));
     })["catch"](function (error) {
-      return console.log(error);
+      var errorsArr = error.response.data;
+      dispatch(getErrors(errorsArr));
     });
   };
 }; // DELETE USER
@@ -1982,10 +1968,11 @@ var fetchAllUsers = function fetchAllUsers() {
 var deleteUser = function deleteUser(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
-      notifyDeletion('Deleted user successfully!');
+      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyDeletion)('Deleted user successfully!');
       dispatch(removeUser(id));
     })["catch"](function (error) {
-      return console.log(error);
+      var errorsArr = error.response.data;
+      dispatch(getErrors(errorsArr));
     });
   };
 }; // POST USER
@@ -1993,7 +1980,7 @@ var deleteUser = function deleteUser(id) {
 var postUser = function postUser(user) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/', user).then(function (user) {
-      notifySuccess('Add user successfully!');
+      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifySuccess)('Add user successfully!');
       dispatch(addUser(user));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
@@ -2194,8 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var _toast_react_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toast/react_toast */ "./compound_power/frontend/src/toast/react_toast.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2220,24 +2206,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
- // for (const tag in errorsArr) {
-//   notifyFailure(`${tag}: ${errorsArr[tag]}`);
-// }
-
-react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.configure(); // TOAST MESSAGES
-
-var notifySuccess = function notifySuccess(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success(message);
-};
-
-var notifyFailure = function notifyFailure(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error(message);
-};
-
-var notifyDeletion = function notifyDeletion(message) {
-  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning(message);
-};
-
 var UsersAlert = /*#__PURE__*/function (_Component) {
   _inherits(UsersAlert, _Component);
 
@@ -2255,9 +2223,9 @@ var UsersAlert = /*#__PURE__*/function (_Component) {
       var errors = this.props.errors;
 
       if (errors !== prevProps.errors) {
-        if (errors.name) notifyFailure("Name: ".concat(errors["name"].join()));
-        if (errors.email) notifyFailure("Email: ".concat(errors["email"].join()));
-        if (errors.username) notifyFailure("Username: ".concat(errors["username"].join()));
+        if (errors.name) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Name: ".concat(errors["name"].join()));
+        if (errors.email) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Email: ".concat(errors["email"].join()));
+        if (errors.username) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Username: ".concat(errors["username"].join()));
       }
     }
   }, {
@@ -2778,6 +2746,37 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./compound_power/frontend/src/toast/react_toast.js":
+/*!**********************************************************!*\
+  !*** ./compound_power/frontend/src/toast/react_toast.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "notifySuccess": () => /* binding */ notifySuccess,
+/* harmony export */   "notifyFailure": () => /* binding */ notifyFailure,
+/* harmony export */   "notifyDeletion": () => /* binding */ notifyDeletion
+/* harmony export */ });
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+
+
+react_toastify__WEBPACK_IMPORTED_MODULE_1__.toast.configure(); // TOAST MESSAGES
+
+var notifySuccess = function notifySuccess(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_1__.toast.success(message);
+};
+var notifyFailure = function notifyFailure(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_1__.toast.error(message);
+};
+var notifyDeletion = function notifyDeletion(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_1__.toast.warning(message);
+};
 
 /***/ }),
 

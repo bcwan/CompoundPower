@@ -1,26 +1,5 @@
 import React, { Component, Fragment } from 'react'
-
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// for (const tag in errorsArr) {
-//   notifyFailure(`${tag}: ${errorsArr[tag]}`);
-// }
-
-toast.configure();
-
-// TOAST MESSAGES
-const notifySuccess = (message) => {
-  toast.success(message);
-}
-
-const notifyFailure = (message) => {
-  toast.error(message);
-}
-
-const notifyDeletion = (message) => {
-  toast.warning(message);
-}
+import { notifyDeletion, notifySuccess, notifyFailure } from '../../toast/react_toast'
 
 export class UsersAlert extends Component {
   componentDidUpdate(prevProps) {
