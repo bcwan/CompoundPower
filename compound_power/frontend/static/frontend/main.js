@@ -2251,10 +2251,14 @@ var UsersAlert = /*#__PURE__*/function (_Component) {
 
   _createClass(UsersAlert, [{
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var errors = this.props.errors; // for (const tag in errors) {
-      //   notifyFailure(`${tag}: ${errors[tag]}`);
-      // }
+    value: function componentDidUpdate(prevProps) {
+      var errors = this.props.errors;
+
+      if (errors !== prevProps.errors) {
+        if (errors.name) notifyFailure("Name: ".concat(errors["name"].join()));
+        if (errors.email) notifyFailure("Email: ".concat(errors["email"].join()));
+        if (errors.username) notifyFailure("Username: ".concat(errors["username"].join()));
+      }
     }
   }, {
     key: "render",
@@ -2287,7 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    errors: Object.values(state.errors.user)
+    errors: state.errors.user
   };
 };
 

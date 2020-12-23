@@ -23,11 +23,13 @@ const notifyDeletion = (message) => {
 }
 
 export class UsersAlert extends Component {
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { errors } = this.props;
-    // for (const tag in errors) {
-    //   notifyFailure(`${tag}: ${errors[tag]}`);
-    // }
+    if (errors !== prevProps.errors) {
+      if (errors.name) notifyFailure(`Name: ${errors["name"].join()}`);
+      if (errors.email) notifyFailure(`Email: ${errors["email"].join()}`);
+      if (errors.username) notifyFailure(`Username: ${errors["username"].join()}`);
+    }
   }
 
   render() {
