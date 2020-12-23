@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_USER, REMOVE_USER } from '../actions/users_actions';
+import { GET_ALL_USERS, GET_USER, REMOVE_USER, ADD_USER } from '../actions/users_actions';
 
 const UserReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
