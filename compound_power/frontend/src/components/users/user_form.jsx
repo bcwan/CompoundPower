@@ -18,7 +18,7 @@ class UserForm extends Component {
     e.preventDefault();
     const { name, username, email } = this.state;
     const user = { name, username, email };
-    this.props.addUser(user);
+    this.props.postUser(user);
   }
 
   render() {

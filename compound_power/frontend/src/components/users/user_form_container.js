@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import UserForm from './user_form';
 
 import {
-  addUser
+  postUser
 } from '../../actions/users_actions'
 
 const mSTP = (state) => ({
@@ -10,7 +10,7 @@ const mSTP = (state) => ({
 });
 
 const mDTP = (dispatch) => ({
-  addUser: (user) => dispatch(addUser(user)),
+  postUser: (user) => dispatch(postUser(user)),
 });
 
 export default connect(mSTP, mDTP)(UserForm);

@@ -35,7 +35,7 @@ const getUser = user => ({
   user
 });
 
-const postUser = user => ({
+const addUser = user => ({
   type: ADD_USER,
   user
 });
@@ -43,6 +43,11 @@ const postUser = user => ({
 const removeUser = userId => ({
   type: REMOVE_USER,
   userId
+})
+
+const getErrors = (errors) => ({
+  type: GET_ERRORS,
+  errors
 })
 
 // GET USERS
@@ -66,11 +71,11 @@ export const deleteUser = (id) => dispatch => {
 }
 
 // POST USER
-export const addUser = (user) => dispatch => {
+export const postUser = (user) => dispatch => {
   axios.post('/api/users/', user)
     .then(user => {
       notifySuccess('Add user successfully!')
-      dispatch(postUser(user))
+      dispatch(addUser(user))
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error.response.data));
 }

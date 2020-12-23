@@ -26,6 +26,8 @@ A Django, React, Redux, and PostgreSQL application where users can set financial
 * Django
 * Python
 * PostgreSQL
+* Recharts.js
+* React Toastify
 
 ## Setup
 * In progress
