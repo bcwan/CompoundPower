@@ -79,9 +79,7 @@ export const postUser = (user) => dispatch => {
       dispatch(addUser(user))
     })
     .catch(error => {
-      let errorsArr = error.response.data; 
-      for (const tag in errorsArr) {
-        notifyFailure(`${tag}: ${errorsArr[tag]}`);
-      }
+      let errorsArr = error.response.data;
+      dispatch(getErrors(errorsArr)); 
     });
 }

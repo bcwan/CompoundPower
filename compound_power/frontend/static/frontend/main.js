@@ -1997,10 +1997,7 @@ var postUser = function postUser(user) {
       dispatch(addUser(user));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-
-      for (var tag in errorsArr) {
-        notifyFailure("".concat(tag, ": ").concat(errorsArr[tag]));
-      }
+      dispatch(getErrors(errorsArr));
     });
   };
 };
@@ -2173,12 +2170,132 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _users_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_form_container */ "./compound_power/frontend/src/components/users/users_form_container.js");
 /* harmony import */ var _users_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_index_container */ "./compound_power/frontend/src/components/users/users_index_container.js");
+/* harmony import */ var _users_alert_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./users_alert_container */ "./compound_power/frontend/src/components/users/users_alert_container.js");
+
 
 
 
 function Dashboard() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_form_container__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_alert_container__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_form_container__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_users_index_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
 }
+
+/***/ }),
+
+/***/ "./compound_power/frontend/src/components/users/users_alert.jsx":
+/*!**********************************************************************!*\
+  !*** ./compound_power/frontend/src/components/users/users_alert.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UsersAlert": () => /* binding */ UsersAlert,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+ // for (const tag in errorsArr) {
+//   notifyFailure(`${tag}: ${errorsArr[tag]}`);
+// }
+
+react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.configure(); // TOAST MESSAGES
+
+var notifySuccess = function notifySuccess(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success(message);
+};
+
+var notifyFailure = function notifyFailure(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error(message);
+};
+
+var notifyDeletion = function notifyDeletion(message) {
+  react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning(message);
+};
+
+var UsersAlert = /*#__PURE__*/function (_Component) {
+  _inherits(UsersAlert, _Component);
+
+  var _super = _createSuper(UsersAlert);
+
+  function UsersAlert() {
+    _classCallCheck(this, UsersAlert);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(UsersAlert, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var errors = this.props.errors; // for (const tag in errors) {
+      //   notifyFailure(`${tag}: ${errors[tag]}`);
+      // }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+    }
+  }]);
+
+  return UsersAlert;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UsersAlert);
+
+/***/ }),
+
+/***/ "./compound_power/frontend/src/components/users/users_alert_container.js":
+/*!*******************************************************************************!*\
+  !*** ./compound_power/frontend/src/components/users/users_alert_container.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _users_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_alert */ "./compound_power/frontend/src/components/users/users_alert.jsx");
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    errors: Object.values(state.errors.user)
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_users_alert__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -2509,11 +2626,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _user_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user_errors_reducer */ "./compound_power/frontend/src/reducers/user_errors_reducer.js");
+/* harmony import */ var _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_errors_reducer */ "./compound_power/frontend/src/reducers/users_errors_reducer.js");
 
 
 var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  user: _user_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+  user: _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -2545,10 +2662,10 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
 
 /***/ }),
 
-/***/ "./compound_power/frontend/src/reducers/user_errors_reducer.js":
-/*!*********************************************************************!*\
-  !*** ./compound_power/frontend/src/reducers/user_errors_reducer.js ***!
-  \*********************************************************************/
+/***/ "./compound_power/frontend/src/reducers/users_errors_reducer.js":
+/*!**********************************************************************!*\
+  !*** ./compound_power/frontend/src/reducers/users_errors_reducer.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2567,10 +2684,7 @@ var userErrorsReducer = function userErrorsReducer() {
 
   switch (action.type) {
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_0__.GET_ERRORS:
-      // action.users.data.forEach((user) => {
-      //   nextState[user.id] = user;
-      // });
-      return nextState;
+      return action.errors;
 
     default:
       return oldState;

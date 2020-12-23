@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import userErrorsReducer from './user_errors_reducer'
+import usersErrorsReducer from './users_errors_reducer'
 
 const errorsReducer = combineReducers({
-  user: userErrorsReducer
+  user: usersErrorsReducer
 });
 
 export default errorsReducer;
