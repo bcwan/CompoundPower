@@ -1,9 +1,24 @@
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER = 'GET_USER';
 export const REMOVE_USER = 'REMOVE_USER'
 export const ADD_USER = 'ADD_USER';
+
+toast.configure();
+
+// TOAST MESSAGES
+const notifySuccess = (message) => {
+  toast.success(message);
+}
+
+const notifyFailure = (message) => {
+  toast.error(message);
+}
+
 
 const getAllUsers = users => ({
   type: GET_ALL_USERS,
