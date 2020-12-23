@@ -1961,7 +1961,7 @@ var removeUser = function removeUser(userId) {
 var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (users) {
-      notifySuccess('Fetched all users!');
+      notifySuccess('Load users!');
       dispatch(getAllUsers(users));
     })["catch"](function (error) {
       return console.log(error);
@@ -1972,7 +1972,7 @@ var fetchAllUsers = function fetchAllUsers() {
 var deleteUser = function deleteUser(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
-      notifyWarning('Deleted user successfully!');
+      notifyDeletion('Deleted user successfully!');
       dispatch(removeUser(id));
     })["catch"](function (error) {
       return console.log(error);

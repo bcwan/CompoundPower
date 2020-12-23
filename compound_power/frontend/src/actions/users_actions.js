@@ -48,7 +48,7 @@ const removeUser = userId => ({
 export const fetchAllUsers = () => dispatch => {
   axios.get('/api/users/')
     .then(users => {
-      notifySuccess('Fetched all users!')
+      notifySuccess('Load users!')
       dispatch(getAllUsers(users))
     })
     .catch(error => console.log(error));
@@ -58,7 +58,7 @@ export const fetchAllUsers = () => dispatch => {
 export const deleteUser = (id) => dispatch => {
   axios.delete(`/api/users/${id}/`)
     .then(() => {
-      notifyWarning('Deleted user successfully!')
+      notifyDeletion('Deleted user successfully!')
       dispatch(removeUser(id))
     })
     .catch(error => console.log(error));
