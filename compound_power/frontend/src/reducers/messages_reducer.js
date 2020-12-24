@@ -5,8 +5,9 @@ const messagesReducer = (oldState = {}, action) => {
   let nextState = Object.assign({}, oldState);
   switch (action.type) {
     case GET_MESSAGES:
-      return nextState;
+      return action.messages;
     case CREATE_MESSAGE:
+      debugger;
       return nextState;
     default:
       return oldState;
