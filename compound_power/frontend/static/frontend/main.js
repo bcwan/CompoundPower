@@ -1941,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/messages_actions */ "./compound_power/frontend/src/actions/messages_actions.js");
 /* harmony import */ var _toast_react_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toast/react_toast */ "./compound_power/frontend/src/toast/react_toast.js");
+ // TOAST FOR CUSTOMIZED MESSAGES
 
  // TOAST
 
@@ -2005,7 +2006,9 @@ var fetchAllUsers = function fetchAllUsers() {
 var deleteUser = function deleteUser(id) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
-      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_2__.notifyDeletion)('Deleted user successfully!');
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
+        deleteUser: 'Deleted user successfully!'
+      }));
       dispatch(removeUser(id));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
@@ -2017,7 +2020,9 @@ var deleteUser = function deleteUser(id) {
 var postUser = function postUser(user) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/', user).then(function (user) {
-      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_2__.notifySuccess)('Add user successfully!');
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
+        addUser: 'Added user successfully!'
+      }));
       dispatch(addUser(user));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
@@ -2269,6 +2274,8 @@ var UsersAlert = /*#__PURE__*/function (_Component) {
 
       if (messages !== prevProps.messages) {
         if (messages.loadUsers) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifySuccess)(messages.loadUsers);
+        if (messages.deleteUser) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyDeletion)(messages.deleteUser);
+        if (messages.addUser) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifySuccess)(messages.addUser);
       }
     }
   }, {

@@ -12,7 +12,9 @@ export class UsersAlert extends Component {
     }
 
     if (messages !== prevProps.messages) {
-      if (messages.loadUsers) notifySuccess(messages.loadUsers)
+      if (messages.loadUsers) notifySuccess(messages.loadUsers);
+      if (messages.deleteUser) notifyDeletion(messages.deleteUser);
+      if (messages.addUser) notifySuccess(messages.addUser);
     } 
   }
 

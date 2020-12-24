@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// TOAST FOR CUSTOMIZED MESSAGES
 import { getMessages, createMessage } from '../actions/messages_actions';
 
 // TOAST
@@ -55,7 +56,7 @@ export const fetchAllUsers = () => dispatch => {
 export const deleteUser = (id) => dispatch => {
   axios.delete(`/api/users/${id}/`)
     .then(() => {
-      notifyDeletion('Deleted user successfully!')
+      dispatch(createMessage({ deleteUser: 'Deleted user successfully!'}))
       dispatch(removeUser(id))
     })
     .catch(error => {
@@ -68,7 +69,7 @@ export const deleteUser = (id) => dispatch => {
 export const postUser = (user) => dispatch => {
   axios.post('/api/users/', user)
     .then(user => {
-      notifySuccess('Add user successfully!')
+      dispatch(createMessage({ addUser: 'Added user successfully!'}))
       dispatch(addUser(user))
     })
     .catch(error => {
