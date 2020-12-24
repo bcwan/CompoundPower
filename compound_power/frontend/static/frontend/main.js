@@ -1991,8 +1991,7 @@ var getErrors = function getErrors(errors) {
 var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (users) {
-      (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_2__.notifySuccess)('Load users!');
-      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getMessages)({
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
         loadUsers: 'Loaded all users!'
       }));
       dispatch(getAllUsers(users));
@@ -2258,12 +2257,18 @@ var UsersAlert = /*#__PURE__*/function (_Component) {
   _createClass(UsersAlert, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var errors = this.props.errors;
+      var _this$props = this.props,
+          errors = _this$props.errors,
+          messages = _this$props.messages;
 
       if (errors !== prevProps.errors) {
         if (errors.name) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Name: ".concat(errors["name"].join()));
         if (errors.email) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Email: ".concat(errors["email"].join()));
         if (errors.username) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Username: ".concat(errors["username"].join()));
+      }
+
+      if (messages !== prevProps.messages) {
+        if (messages.loadUsers) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifySuccess)(messages.loadUsers);
       }
     }
   }, {
@@ -2297,7 +2302,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    errors: state.errors.user
+    errors: state.errors.user,
+    messages: state.messages
   };
 };
 
@@ -2671,8 +2677,7 @@ var messagesReducer = function messagesReducer() {
       return action.messages;
 
     case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.CREATE_MESSAGE:
-      debugger;
-      return nextState;
+      return action.message;
 
     default:
       return oldState;

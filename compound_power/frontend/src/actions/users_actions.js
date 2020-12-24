@@ -42,8 +42,7 @@ const getErrors = (errors) => ({
 export const fetchAllUsers = () => dispatch => {
   axios.get('/api/users/')
     .then(users => {
-      notifySuccess('Load users!')
-      dispatch(getMessages({ loadUsers: 'Loaded all users!' }))
+      dispatch(createMessage({ loadUsers: 'Loaded all users!' }))
       dispatch(getAllUsers(users))
     })
     .catch(error => {

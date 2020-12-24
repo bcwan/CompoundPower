@@ -7,8 +7,7 @@ const messagesReducer = (oldState = {}, action) => {
     case GET_MESSAGES:
       return action.messages;
     case CREATE_MESSAGE:
-      debugger;
-      return nextState;
+      return action.message;
     default:
       return oldState;
   }
