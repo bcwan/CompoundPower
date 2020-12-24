@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { getMessages, createMessage } from '../actions/messages_actions';
+
 // TOAST
 import { notifyDeletion, notifySuccess, notifyFailure } from '../toast/react_toast'
 
@@ -41,6 +43,7 @@ export const fetchAllUsers = () => dispatch => {
   axios.get('/api/users/')
     .then(users => {
       notifySuccess('Load users!')
+      dispatch(getMessages({ loadUsers: 'Loaded all users!' }))
       dispatch(getAllUsers(users))
     })
     .catch(error => {
