@@ -19,6 +19,11 @@ class UsersForm extends Component {
     const { name, username, email } = this.state;
     const user = { name, username, email };
     this.props.postUser(user);
+    this.setState({
+      name: '',
+      username: '',
+      email: ''
+    });
   }
 
   render() {

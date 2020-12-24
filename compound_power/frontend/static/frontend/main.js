@@ -1895,20 +1895,10 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "GET_MESSAGES": () => /* binding */ GET_MESSAGES,
 /* harmony export */   "CREATE_MESSAGE": () => /* binding */ CREATE_MESSAGE,
-/* harmony export */   "getMessages": () => /* binding */ getMessages,
 /* harmony export */   "createMessage": () => /* binding */ createMessage
 /* harmony export */ });
-var GET_MESSAGES = 'GET_MESSAGES';
-var CREATE_MESSAGE = 'CREATE_MESSAGE'; // GET MESSAGES
-
-var getMessages = function getMessages(messages) {
-  return {
-    type: GET_MESSAGES,
-    messages: messages
-  };
-}; // CREATE MESSAGE
+var CREATE_MESSAGE = 'CREATE_MESSAGE'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
   return {
@@ -1940,10 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/messages_actions */ "./compound_power/frontend/src/actions/messages_actions.js");
-/* harmony import */ var _toast_react_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toast/react_toast */ "./compound_power/frontend/src/toast/react_toast.js");
  // TOAST FOR CUSTOMIZED MESSAGES
-
- // TOAST
 
 
 var GET_ALL_USERS = 'GET_ALL_USERS';
@@ -2389,6 +2376,12 @@ var UsersForm = /*#__PURE__*/function (_Component) {
       };
 
       _this.props.postUser(user);
+
+      _this.setState({
+        name: '',
+        username: '',
+        email: ''
+      });
     };
 
     _this.state = {

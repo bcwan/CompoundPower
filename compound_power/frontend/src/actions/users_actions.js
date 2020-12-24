@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 // TOAST FOR CUSTOMIZED MESSAGES
-import { getMessages, createMessage } from '../actions/messages_actions';
-
-// TOAST
-import { notifyDeletion, notifySuccess, notifyFailure } from '../toast/react_toast'
+import { createMessage } from '../actions/messages_actions';
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER = 'GET_USER';
