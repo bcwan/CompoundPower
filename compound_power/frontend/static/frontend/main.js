@@ -1897,16 +1897,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CREATE_MESSAGE": () => /* binding */ CREATE_MESSAGE,
 /* harmony export */   "RETURN_ERRORS": () => /* binding */ RETURN_ERRORS,
+/* harmony export */   "GET_ERRORS": () => /* binding */ GET_ERRORS,
 /* harmony export */   "createMessage": () => /* binding */ createMessage,
+/* harmony export */   "getErrors": () => /* binding */ getErrors,
 /* harmony export */   "returnErrors": () => /* binding */ returnErrors
 /* harmony export */ });
 var CREATE_MESSAGE = 'CREATE_MESSAGE';
-var RETURN_ERRORS = 'RETURN_ERRORS'; // CREATE MESSAGE
+var RETURN_ERRORS = 'RETURN_ERRORS';
+var GET_ERRORS = 'GET_ERRORS'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
   return {
     type: CREATE_MESSAGE,
     message: message
+  };
+}; // RETURN ERRORS
+
+var getErrors = function getErrors(errors) {
+  return {
+    type: GET_ERRORS,
+    errors: errors
   };
 }; // RETURN ERRORS
 
@@ -1935,7 +1945,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GET_USER": () => /* binding */ GET_USER,
 /* harmony export */   "REMOVE_USER": () => /* binding */ REMOVE_USER,
 /* harmony export */   "ADD_USER": () => /* binding */ ADD_USER,
-/* harmony export */   "GET_ERRORS": () => /* binding */ GET_ERRORS,
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "deleteUser": () => /* binding */ deleteUser,
 /* harmony export */   "postUser": () => /* binding */ postUser
@@ -1949,8 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
 var REMOVE_USER = 'REMOVE_USER';
-var ADD_USER = 'ADD_USER';
-var GET_ERRORS = 'GET_ERRORS'; // ACTIONS
+var ADD_USER = 'ADD_USER'; // ACTIONS
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1978,14 +1986,6 @@ var removeUser = function removeUser(userId) {
     type: REMOVE_USER,
     userId: userId
   };
-}; // 
-
-
-var getErrors = function getErrors(errors) {
-  return {
-    type: GET_ERRORS,
-    errors: errors
-  };
 }; // GET USERS
 
 
@@ -1998,7 +1998,7 @@ var fetchAllUsers = function fetchAllUsers() {
       dispatch(getAllUsers(users));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch(getErrors(errorsArr));
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
     });
   };
 }; // DELETE USER
@@ -2012,7 +2012,7 @@ var deleteUser = function deleteUser(id) {
       dispatch(removeUser(id));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch(getErrors(errorsArr));
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
     });
   };
 }; // POST USER
@@ -2026,7 +2026,7 @@ var postUser = function postUser(user) {
       dispatch(addUser(user));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch(getErrors(errorsArr));
+      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
     });
   };
 };
