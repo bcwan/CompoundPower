@@ -1896,37 +1896,14 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CREATE_MESSAGE": () => /* binding */ CREATE_MESSAGE,
-/* harmony export */   "RETURN_ERRORS": () => /* binding */ RETURN_ERRORS,
-/* harmony export */   "GET_ERRORS": () => /* binding */ GET_ERRORS,
-/* harmony export */   "createMessage": () => /* binding */ createMessage,
-/* harmony export */   "getErrors": () => /* binding */ getErrors,
-/* harmony export */   "returnErrors": () => /* binding */ returnErrors
+/* harmony export */   "createMessage": () => /* binding */ createMessage
 /* harmony export */ });
-var CREATE_MESSAGE = 'CREATE_MESSAGE';
-var RETURN_ERRORS = 'RETURN_ERRORS';
-var GET_ERRORS = 'GET_ERRORS'; // CREATE MESSAGE
+var CREATE_MESSAGE = 'CREATE_MESSAGE'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
   return {
     type: CREATE_MESSAGE,
     message: message
-  };
-}; // RETURN ERRORS
-
-var getErrors = function getErrors(errors) {
-  return {
-    type: GET_ERRORS,
-    errors: errors
-  };
-}; // RETURN ERRORS
-
-var returnErrors = function returnErrors(message, status) {
-  return {
-    type: RETURN_ERRORS,
-    errors: {
-      message: message,
-      status: status
-    }
   };
 };
 
