@@ -1,13 +1,13 @@
-import { GET_MESSAGES, CREATE_MESSAGE } from '../actions/messages_actions';
+import { CREATE_MESSAGE, GET_ERRORS } from '../actions/messages_actions';
 
 const messagesReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let nextState = Object.assign({}, oldState);
   switch (action.type) {
-    case GET_MESSAGES:
-      return action.messages;
     case CREATE_MESSAGE:
       return action.message;
+    case GET_ERRORS:
+      return action.errors;
     default:
       return oldState;
   }

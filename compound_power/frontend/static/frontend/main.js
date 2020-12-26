@@ -1896,14 +1896,27 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CREATE_MESSAGE": () => /* binding */ CREATE_MESSAGE,
-/* harmony export */   "createMessage": () => /* binding */ createMessage
+/* harmony export */   "RETURN_ERRORS": () => /* binding */ RETURN_ERRORS,
+/* harmony export */   "createMessage": () => /* binding */ createMessage,
+/* harmony export */   "returnErrors": () => /* binding */ returnErrors
 /* harmony export */ });
-var CREATE_MESSAGE = 'CREATE_MESSAGE'; // CREATE MESSAGE
+var CREATE_MESSAGE = 'CREATE_MESSAGE';
+var RETURN_ERRORS = 'RETURN_ERRORS'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
   return {
     type: CREATE_MESSAGE,
     message: message
+  };
+}; // RETURN ERRORS
+
+var returnErrors = function returnErrors(message, status) {
+  return {
+    type: RETURN_ERRORS,
+    errors: {
+      message: message,
+      status: status
+    }
   };
 };
 
@@ -2673,11 +2686,11 @@ var messagesReducer = function messagesReducer() {
   var nextState = Object.assign({}, oldState);
 
   switch (action.type) {
-    case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.GET_MESSAGES:
-      return action.messages;
-
     case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.CREATE_MESSAGE:
       return action.message;
+
+    case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.GET_ERRORS:
+      return action.errors;
 
     default:
       return oldState;
