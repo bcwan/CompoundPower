@@ -2257,6 +2257,7 @@ var UsersAlert = /*#__PURE__*/function (_Component) {
         if (errors.name) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Name: ".concat(errors["name"].join()));
         if (errors.email) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Email: ".concat(errors["email"].join()));
         if (errors.username) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Username: ".concat(errors["username"].join()));
+        if (errors.detail) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors.detail));
       }
 
       if (messages !== prevProps.messages) {
