@@ -2823,9 +2823,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return (//createStore(rootReducer, preloadedState, composeWithDevTools(applyMiddleware(thunk, logger)))
-    (0,redux__WEBPACK_IMPORTED_MODULE_4__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__.default, preloadedState, (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_0__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_4__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default)))
-  );
+  return (0,redux__WEBPACK_IMPORTED_MODULE_4__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__.default, preloadedState, (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_0__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_4__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
