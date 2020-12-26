@@ -1945,6 +1945,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GET_USER": () => /* binding */ GET_USER,
 /* harmony export */   "REMOVE_USER": () => /* binding */ REMOVE_USER,
 /* harmony export */   "ADD_USER": () => /* binding */ ADD_USER,
+/* harmony export */   "GET_ERRORS": () => /* binding */ GET_ERRORS,
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "deleteUser": () => /* binding */ deleteUser,
 /* harmony export */   "postUser": () => /* binding */ postUser
@@ -1958,7 +1959,8 @@ __webpack_require__.r(__webpack_exports__);
 var GET_ALL_USERS = 'GET_ALL_USERS';
 var GET_USER = 'GET_USER';
 var REMOVE_USER = 'REMOVE_USER';
-var ADD_USER = 'ADD_USER'; // ACTIONS
+var ADD_USER = 'ADD_USER';
+var GET_ERRORS = 'GET_ERRORS'; // ACTIONS
 
 var getAllUsers = function getAllUsers(users) {
   return {
@@ -1986,6 +1988,14 @@ var removeUser = function removeUser(userId) {
     type: REMOVE_USER,
     userId: userId
   };
+}; // 
+
+
+var getErrors = function getErrors(errors) {
+  return {
+    type: GET_ERRORS,
+    errors: errors
+  };
 }; // GET USERS
 
 
@@ -1998,7 +2008,7 @@ var fetchAllUsers = function fetchAllUsers() {
       dispatch(getAllUsers(users));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
+      dispatch(getErrors(errorsArr));
     });
   };
 }; // DELETE USER
@@ -2012,7 +2022,7 @@ var deleteUser = function deleteUser(id) {
       dispatch(removeUser(id));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
+      dispatch(getErrors(errorsArr));
     });
   };
 }; // POST USER
@@ -2026,7 +2036,7 @@ var postUser = function postUser(user) {
       dispatch(addUser(user));
     })["catch"](function (error) {
       var errorsArr = error.response.data;
-      dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.getErrors)(errorsArr));
+      dispatch(getErrors(errorsArr));
     });
   };
 };
@@ -2688,9 +2698,6 @@ var messagesReducer = function messagesReducer() {
   switch (action.type) {
     case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.CREATE_MESSAGE:
       return action.message;
-
-    case _actions_messages_actions__WEBPACK_IMPORTED_MODULE_0__.GET_ERRORS:
-      return action.errors;
 
     default:
       return oldState;
