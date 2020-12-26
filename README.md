@@ -24,6 +24,7 @@ A Django, React, Redux, and PostgreSQL application where users can set financial
 * React
 * Redux
 * Django
+* Axios
 * Python
 * PostgreSQL
 * Recharts.js
