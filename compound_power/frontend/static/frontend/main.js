@@ -1897,11 +1897,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "USER_LOADING": () => /* binding */ USER_LOADING,
 /* harmony export */   "USER_LOADED": () => /* binding */ USER_LOADED,
-/* harmony export */   "AUTH_ERROR": () => /* binding */ AUTH_ERROR
+/* harmony export */   "AUTH_ERROR": () => /* binding */ AUTH_ERROR,
+/* harmony export */   "loadUser": () => /* binding */ loadUser
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 var USER_LOADING = 'USER_LOADING';
 var USER_LOADED = 'USER_LOADED';
 var AUTH_ERROR = 'AUTH_ERROR';
+
+var userLoading = function userLoading() {
+  return {
+    type: USER_LOADING
+  };
+};
+
+var userLoaded = function userLoaded(userData) {
+  return {
+    type: USER_LOADED,
+    userData: userData
+  };
+};
+
+var authError = function authError() {
+  return {
+    type: AUTH_ERROR
+  };
+}; // CHECK TOKEN AND LOAD USER
+
+
+var loadUser = function loadUser() {
+  return function (dispatch, getState) {
+    // User Loading
+    dispatch(userLoading()); // Get token from state
+
+    var token = getState().auth.token; // Headers
+
+    var config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }; // If token, add to headers config
+
+    if (token) {
+      config.headers['Authorization'] = "Token ".concat(token);
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/auth/user', config).then(function (result) {
+      return dispatch(userLoaded(result.data));
+    })["catch"](function (error) {// dispatch(createMessage(error.response.data))
+      // dispatch(authError())
+    });
+  };
+};
 
 /***/ }),
 
