@@ -7,14 +7,18 @@ const mSTP = (state) => ({
   auth: state.auth
 });
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
-  return (
+const PrivateRoute = ({ component: Component, auth, ...rest }) => (
     <Route {...rest}
       render={props => {
-        return <Component {...props} />;
+        if (auth.isLoading) {
+          return <h2>Loading...</h2>;
+        } else if (!auth.isAuthenticated) {
+          return <Redirect to="/login" />
+        } else {
+          return <Component {...props} />;
+        }
       }}
     />
-  )
-}
+  );
 
 export default connect(mSTP)(PrivateRoute);

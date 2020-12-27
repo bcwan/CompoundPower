@@ -22,8 +22,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
-                <PrivateRoute exact path="/register" component={RegisterForm} />
-                <PrivateRoute exact path="/login" component={LoginForm} />
+                <Route exact path="/register" component={RegisterForm} />
+                <Route exact path="/login" component={LoginForm} />
               </Switch>
             </div>
           </Fragment>
