@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './header/header';
 import Dashboard from './users/dashboard';
@@ -11,12 +12,14 @@ class App extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
-        <Fragment>
-          <Header />
-          <div className="container">
-            <Dashboard />
-          </div>
-        </Fragment>
+        <Router>
+          <Fragment>
+            <Header />
+            <div className="container">
+              <Dashboard />
+            </div>
+          </Fragment>
+        </Router>
       </Provider>
     )
   }
