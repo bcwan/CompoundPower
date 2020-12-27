@@ -3017,6 +3017,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./compound_power/frontend/src/reducers/auth_error_reducer.js":
+/*!********************************************************************!*\
+  !*** ./compound_power/frontend/src/reducers/auth_error_reducer.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
+
+
+var authErrorsReducer = function authErrorsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var nextState = Object.assign({}, oldState);
+
+  switch (action.type) {
+    // case AUTH_ERROR:
+    //   return action.errors;
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (authErrorsReducer);
+
+/***/ }),
+
 /***/ "./compound_power/frontend/src/reducers/auth_reducer.js":
 /*!**************************************************************!*\
   !*** ./compound_power/frontend/src/reducers/auth_reducer.js ***!
@@ -3113,12 +3145,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_errors_reducer */ "./compound_power/frontend/src/reducers/users_errors_reducer.js");
+/* harmony import */ var _auth_error_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth_error_reducer */ "./compound_power/frontend/src/reducers/auth_error_reducer.js");
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  user: _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  user: _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  auth: _auth_error_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
