@@ -1886,6 +1886,25 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./compound_power/frontend/src/actions/auth_actions.js":
+/*!*************************************************************!*\
+  !*** ./compound_power/frontend/src/actions/auth_actions.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "USER_LOADING": () => /* binding */ USER_LOADING,
+/* harmony export */   "USER_LOADED": () => /* binding */ USER_LOADED,
+/* harmony export */   "AUTH_ERROR": () => /* binding */ AUTH_ERROR
+/* harmony export */ });
+var USER_LOADING = 'USER_LOADING';
+var USER_LOADED = 'USER_LOADED';
+var AUTH_ERROR = 'AUTH_ERROR';
+
+/***/ }),
+
 /***/ "./compound_power/frontend/src/actions/messages_actions.js":
 /*!*****************************************************************!*\
   !*** ./compound_power/frontend/src/actions/messages_actions.js ***!
@@ -2960,7 +2979,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-//import { CREATE_MESSAGE } from '../actions/messages_actions';
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 var initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
@@ -2975,6 +3001,27 @@ var authReducer = function authReducer() {
   var nextState = Object.assign({}, oldState);
 
   switch (action.type) {
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.USER_LOADED:
+      return _objectSpread(_objectSpread({}, nextState), {}, {
+        isAuthenticated: true,
+        isLoading: false,
+        user: action.user
+      });
+
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.USER_LOADING:
+      return _objectSpread(_objectSpread({}, nextState), {}, {
+        isLoading: true
+      });
+
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.AUTH_ERROR:
+      localStorage.removeItem('token');
+      return _objectSpread(_objectSpread({}, nextState), {}, {
+        token: null,
+        user: null,
+        isAuthenticated: false,
+        isLoading: false
+      });
+
     default:
       return oldState;
   }
