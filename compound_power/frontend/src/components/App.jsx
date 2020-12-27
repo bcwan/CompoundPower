@@ -16,7 +16,9 @@ class App extends Component {
           <Fragment>
             <Header />
             <div className="container">
-              <Dashboard />
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+              </Switch>
             </div>
           </Fragment>
         </Router>
