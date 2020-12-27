@@ -17,6 +17,10 @@ export class RegisterForm extends Component {
     console.log('Submit');
   }
 
+  onChange = e => {
+    return this.setState({[e.target.name]: e.target.value})
+  }
+
   render() {
     const { username, email, password, confirmPassword } = this.state;
     return (
