@@ -10,14 +10,15 @@ export class Header extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a className="navbar-brand" href="#">CompoundPower</a>
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <Link to="/register" className="nav-link">Register</Link>
-              <Link to="/login" className="nav-link">Login</Link>
-            </li>
-            <li className="nav-item"></li>
-          </ul>
         </div>
+        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li className="nav-item">
+            <Link to="/register" className="nav-link">Register</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">Login</Link>
+          </li>
+        </ul>
       </nav>
     )
   }

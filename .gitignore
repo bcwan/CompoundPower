@@ -85,3 +85,5 @@ sftp-config.json
 ./userauth/settings.py
 compound_power/compound_power/settings.py
 .vscode
+
+compound_power/frontend/static/frontend/main.js.map
