@@ -7,6 +7,7 @@ import Dashboard from './users/dashboard';
 
 import LoginForm from './accounts/login_form';
 import RegisterForm from './accounts/register_form';
+import PrivateRoute from './routes/private_route';
 
 import { Provider } from 'react-redux';
 import configureStore from '../store/store';
@@ -20,9 +21,9 @@ class App extends Component {
             <Header />
             <div className="container">
               <Switch>
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/register" component={RegisterForm} />
-                <Route exact path="/login" component={LoginForm} />
+                <PrivateRoute exact path="/" component={Dashboard} />
+                <PrivateRoute exact path="/register" component={RegisterForm} />
+                <PrivateRoute exact path="/login" component={LoginForm} />
               </Switch>
             </div>
           </Fragment>
