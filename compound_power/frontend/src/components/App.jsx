@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Header from './header/header';
 import Dashboard from './users/dashboard';
 
+// login, account recreation components and routes
 import LoginForm from './accounts/login_form';
 import RegisterForm from './accounts/register_form';
 import PrivateRoute from './routes/private_route';
