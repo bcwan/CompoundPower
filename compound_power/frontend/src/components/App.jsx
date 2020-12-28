@@ -10,6 +10,9 @@ import RegisterForm from './accounts/register_form';
 import PrivateRoute from './routes/private_route';
 import { loadUser } from '../actions/auth_actions';
 
+// alerts with authentication
+import AuthAlertContainer from './accounts/auth_alert_container';
+
 import { Provider } from 'react-redux';
 
 import store from '../store/store';
@@ -25,6 +28,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Fragment>
+            <AuthAlertContainer />
             <Header />
             <div className="container">
               <Switch>

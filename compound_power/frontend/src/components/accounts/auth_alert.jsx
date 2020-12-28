@@ -5,9 +5,8 @@ export class AuthAlert extends Component {
 
   componentDidUpdate(prevProps) {
     const { errors } = this.props;
-
     if (errors !== prevProps.errors) {
-      if (errors.detail) notifyFailure(`${errors["detail"].join()}`);
+      if (errors.detail) notifyFailure(`${errors["detail"]}`);
     }
   }
 
