@@ -3,6 +3,7 @@ import axios from 'axios';
 export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
 
 const userLoading = () => ({
   type: USER_LOADING
@@ -15,6 +16,11 @@ const userLoaded = (userData) => ({
 
 const authError = () => ({
   type: AUTH_ERROR
+});
+
+const getAuthErrorMessages = (errors) => ({
+  type: GET_AUTH_ERROR_MESSAGES,
+  errors
 });
 
 // CHECK TOKEN AND LOAD USER
@@ -38,7 +44,9 @@ export const loadUser = () => (dispatch, getState) => {
   axios.get('/api/auth/user', config)
     .then(result => dispatch(userLoaded(result.data)))
     .catch(error => {
-      // dispatch(createMessage(error.response.data))
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data))
+      // changes state of auth reducer
       dispatch(authError());
     })
 }

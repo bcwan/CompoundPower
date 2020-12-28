@@ -1,5 +1,4 @@
 import { USER_LOADED, USER_LOADING, AUTH_ERROR } from '../actions/auth_actions';
-// AUTH_ERROR is in auth_error_reducer.js
 
 const initialState = {
   token: localStorage.getItem('token'),
