@@ -39,6 +39,6 @@ export const loadUser = () => (dispatch, getState) => {
     .then(result => dispatch(userLoaded(result.data)))
     .catch(error => {
       // dispatch(createMessage(error.response.data))
-      // dispatch(authError())
+      dispatch(authError());
     })
 }
