@@ -8,14 +8,21 @@ import Dashboard from './users/dashboard';
 import LoginForm from './accounts/login_form';
 import RegisterForm from './accounts/register_form';
 import PrivateRoute from './routes/private_route';
+import { loadUser } from '../actions/auth_actions';
 
 import { Provider } from 'react-redux';
-import configureStore from '../store/store';
+//import configureStore from '../store/store';
+import store from '../store/store';
 
 class App extends Component {
+  // configure
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
   render() {
     return (
-      <Provider store={configureStore()}>
+      <Provider store={store}>
         <Router>
           <Fragment>
             <Header />
