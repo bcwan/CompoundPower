@@ -1898,6 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "USER_LOADING": () => /* binding */ USER_LOADING,
 /* harmony export */   "USER_LOADED": () => /* binding */ USER_LOADED,
 /* harmony export */   "AUTH_ERROR": () => /* binding */ AUTH_ERROR,
+/* harmony export */   "GET_AUTH_ERROR_MESSAGES": () => /* binding */ GET_AUTH_ERROR_MESSAGES,
 /* harmony export */   "loadUser": () => /* binding */ loadUser
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -1906,6 +1907,7 @@ __webpack_require__.r(__webpack_exports__);
 var USER_LOADING = 'USER_LOADING';
 var USER_LOADED = 'USER_LOADED';
 var AUTH_ERROR = 'AUTH_ERROR';
+var GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
 
 var userLoading = function userLoading() {
   return {
@@ -1923,6 +1925,13 @@ var userLoaded = function userLoaded(userData) {
 var authError = function authError() {
   return {
     type: AUTH_ERROR
+  };
+};
+
+var getAuthErrorMessages = function getAuthErrorMessages(errors) {
+  return {
+    type: GET_AUTH_ERROR_MESSAGES,
+    errors: errors
   };
 }; // CHECK TOKEN AND LOAD USER
 
@@ -1946,8 +1955,11 @@ var loadUser = function loadUser() {
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/auth/user', config).then(function (result) {
       return dispatch(userLoaded(result.data));
-    })["catch"](function (error) {// dispatch(createMessage(error.response.data))
-      // dispatch(authError())
+    })["catch"](function (error) {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer
+
+      dispatch(authError());
     });
   };
 };
@@ -3017,10 +3029,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./compound_power/frontend/src/reducers/auth_error_reducer.js":
-/*!********************************************************************!*\
-  !*** ./compound_power/frontend/src/reducers/auth_error_reducer.js ***!
-  \********************************************************************/
+/***/ "./compound_power/frontend/src/reducers/auth_errors_reducer.js":
+/*!*********************************************************************!*\
+  !*** ./compound_power/frontend/src/reducers/auth_errors_reducer.js ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3038,8 +3050,9 @@ var authErrorsReducer = function authErrorsReducer() {
   var nextState = Object.assign({}, oldState);
 
   switch (action.type) {
-    // case AUTH_ERROR:
-    //   return action.errors;
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.GET_AUTH_ERROR_MESSAGES:
+      return action.errors;
+
     default:
       return oldState;
   }
@@ -3147,13 +3160,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_errors_reducer */ "./compound_power/frontend/src/reducers/users_errors_reducer.js");
-/* harmony import */ var _auth_error_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth_error_reducer */ "./compound_power/frontend/src/reducers/auth_error_reducer.js");
+/* harmony import */ var _auth_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth_errors_reducer */ "./compound_power/frontend/src/reducers/auth_errors_reducer.js");
 
 
 
 var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
   user: _users_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  auth: _auth_error_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  auth: _auth_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 

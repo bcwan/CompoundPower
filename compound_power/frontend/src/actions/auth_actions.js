@@ -45,8 +45,8 @@ export const loadUser = () => (dispatch, getState) => {
     .then(result => dispatch(userLoaded(result.data)))
     .catch(error => {
       // make a toast message for user - sent to auth_errors_reducer.js
-      dispatch(getAuthErrorMessages(error.response.data))
+      dispatch(getAuthErrorMessages(error.response.data));
       // changes state of auth reducer
       dispatch(authError());
-    })
+  })
 }
