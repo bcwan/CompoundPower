@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import Header from './header/header';
+import HeaderContainer from './header/header_container';
 import Dashboard from './users/dashboard';
 
 // login, account recreation components and routes
@@ -30,7 +30,7 @@ class App extends Component {
         <Router>
           <Fragment>
             <AuthAlertContainer />
-            <Header />
+            <HeaderContainer />
             <div className="container">
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />

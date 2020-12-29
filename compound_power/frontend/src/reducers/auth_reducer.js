@@ -16,7 +16,7 @@ const authReducer = (oldState = initialState, action) => {
         ...nextState,
         isAuthenticated: true,
         isLoading: false,
-        user: action.user
+        user: action.userData
       }
     case USER_LOADING:
       return {
