@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Header from './header';
 
 const mSTP = (state) => ({
-  errors: state.errors.auth,
+  auth: state.auth,
 });
 
 const mDTP = (dispatch) => ({
