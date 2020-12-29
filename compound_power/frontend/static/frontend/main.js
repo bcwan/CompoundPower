@@ -2305,6 +2305,7 @@ var AuthAlert = /*#__PURE__*/function (_Component) {
         if (errors.detail) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors["detail"]));
         if (errors.username) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Username: ".concat(errors.username.join()));
         if (errors.password) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Password: ".concat(errors.password.join()));
+        if (errors.non_field_errors) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors.non_field_errors.join()));
       }
     }
   }, {
