@@ -2038,7 +2038,7 @@ var logout = function logout() {
     }
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/logout', null, config).then(function (result) {
-      return dispatch(loginSuccess());
+      return dispatch(logoutSuccess());
     })["catch"](function (error) {
       // make a toast message for user - sent to auth_errors_reducer.js
       dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer

@@ -113,7 +113,7 @@ export const logout = () => (dispatch, getState) => {
   }
 
   axios.post('/api/auth/logout', null, config)
-    .then(result => dispatch(loginSuccess()))
+    .then(result => dispatch(logoutSuccess()))
     .catch(error => {
       // make a toast message for user - sent to auth_errors_reducer.js
       dispatch(getAuthErrorMessages(error.response.data));
