@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 export class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    const { logout } = this.props;
     const authLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <li className="nav-item">
-          <button className="nav-link btn btn-info btn-sm text-light">
+          <button onClick={logout} className="nav-link btn btn-info btn-sm text-light">
             Logout
           </button> 
         </li>

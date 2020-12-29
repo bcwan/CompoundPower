@@ -7,6 +7,7 @@ export const GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
 export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 const userLoading = () => ({
   type: USER_LOADING
@@ -38,6 +39,10 @@ const loginSuccess = (userData) => ({
 const loginFail = () => ({
   type: LOGIN_FAIL
 })
+
+const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS
+});
 
 // CHECK TOKEN AND LOAD USER
 export const loadUser = () => (dispatch, getState) => {
@@ -89,5 +94,30 @@ export const login = (username, password) => (dispatch) => {
       dispatch(getAuthErrorMessages(error.response.data));
       // changes state of auth reducer
       dispatch(loginFail());
+  })
+}
+
+// LOGOUT USER
+export const logout = () => (dispatch, getState) => {
+
+  const token = getState().auth.token;
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  // If token, add to headers config
+  if (token) {
+    config.headers['Authorization'] = `Token ${token}`;
+  }
+
+  axios.post('/api/auth/logout', null, config)
+    .then(result => dispatch(loginSuccess()))
+    .catch(error => {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data));
+      // changes state of auth reducer
+      dispatch(authError());
   })
 }

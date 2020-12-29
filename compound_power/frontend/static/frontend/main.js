@@ -1902,8 +1902,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CLEAR_USER_ERRORS": () => /* binding */ CLEAR_USER_ERRORS,
 /* harmony export */   "LOGIN_SUCCESS": () => /* binding */ LOGIN_SUCCESS,
 /* harmony export */   "LOGIN_FAIL": () => /* binding */ LOGIN_FAIL,
+/* harmony export */   "LOGOUT_SUCCESS": () => /* binding */ LOGOUT_SUCCESS,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
-/* harmony export */   "login": () => /* binding */ login
+/* harmony export */   "login": () => /* binding */ login,
+/* harmony export */   "logout": () => /* binding */ logout
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -1915,6 +1917,7 @@ var GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
 var CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 var LOGIN_FAIL = 'LOGIN_FAIL';
+var LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 var userLoading = function userLoading() {
   return {
@@ -1958,6 +1961,12 @@ var loginSuccess = function loginSuccess(userData) {
 var loginFail = function loginFail() {
   return {
     type: LOGIN_FAIL
+  };
+};
+
+var logoutSuccess = function logoutSuccess() {
+  return {
+    type: LOGOUT_SUCCESS
   };
 }; // CHECK TOKEN AND LOAD USER
 
@@ -2011,6 +2020,30 @@ var login = function login(username, password) {
       dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer
 
       dispatch(loginFail());
+    });
+  };
+}; // LOGOUT USER
+
+var logout = function logout() {
+  return function (dispatch, getState) {
+    var token = getState().auth.token;
+    var config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }; // If token, add to headers config
+
+    if (token) {
+      config.headers['Authorization'] = "Token ".concat(token);
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/logout', null, config).then(function (result) {
+      return dispatch(loginSuccess());
+    })["catch"](function (error) {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer
+
+      dispatch(authError());
     });
   };
 };
@@ -2712,11 +2745,13 @@ var Header = /*#__PURE__*/function (_Component) {
       var _this$props$auth = this.props.auth,
           isAuthenticated = _this$props$auth.isAuthenticated,
           user = _this$props$auth.user;
+      var logout = this.props.logout;
       var authLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "navbar-nav mr-auto mt-2 mt-lg-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "nav-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: logout,
         className: "nav-link btn btn-info btn-sm text-light"
       }, "Logout")));
       var guestLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
@@ -2775,6 +2810,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./compound_power/frontend/src/components/header/header.jsx");
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
+
 
 
 
@@ -2785,7 +2822,11 @@ var mSTP = function mSTP(state) {
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {};
+  return {
+    logout: function logout() {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
+    }
+  };
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_header__WEBPACK_IMPORTED_MODULE_1__.default));
@@ -3374,6 +3415,7 @@ var authReducer = function authReducer() {
 
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.AUTH_ERROR:
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_FAIL:
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGOUT_SUCCESS:
       localStorage.removeItem('token');
       return _objectSpread(_objectSpread({}, nextState), {}, {
         token: null,
