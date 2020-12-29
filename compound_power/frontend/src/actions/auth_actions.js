@@ -25,6 +25,15 @@ const getAuthErrorMessages = (errors) => ({
   errors
 });
 
+const loginSuccess = (userData) => ({
+  type: LOGIN_SUCCESS,
+  userData
+});
+
+const loginFail = () => ({
+  type: LOGIN_FAIL
+})
+
 // CHECK TOKEN AND LOAD USER
 export const loadUser = () => (dispatch, getState) => {
   // User Loading
@@ -50,5 +59,27 @@ export const loadUser = () => (dispatch, getState) => {
       dispatch(getAuthErrorMessages(error.response.data));
       // changes state of auth reducer
       dispatch(authError());
+  })
+}
+
+// LOGIN USER
+export const login = (username, password) => (dispatch) => {
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  // Request Body
+  const body = JSON.stringify({ username, password });
+
+  axios.post('/api/auth/login', body, config)
+    .then(result => dispatch(loginSuccess(result.data)))
+    .catch(error => {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data));
+      // changes state of auth reducer
+      dispatch(loginFail());
   })
 }
