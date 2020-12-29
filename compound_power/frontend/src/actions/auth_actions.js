@@ -4,6 +4,8 @@ export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 const userLoading = () => ({
   type: USER_LOADING
