@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 export class LoginForm extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ export class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('Submit');
+    const { username, password } = this.state;
+    this.props.login(username, password);
   }
 
   onChange = e => {
@@ -21,6 +22,10 @@ export class LoginForm extends Component {
 
   render() {
     const { username, password } = this.state;
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
