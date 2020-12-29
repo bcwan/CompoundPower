@@ -1,4 +1,4 @@
-import { USER_LOADED, USER_LOADING, AUTH_ERROR } from '../actions/auth_actions';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/auth_actions';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -23,7 +23,16 @@ const authReducer = (oldState = initialState, action) => {
         ...nextState,
         isLoading: true
       }
+    case LOGIN_SUCCESS:
+      localStorage.setItem('token', action.userData.token);
+      return {
+        ...nextState,
+        ...action.userData,
+        isAuthenticated: true,
+        isLoading: false
+      }
     case AUTH_ERROR:
+    case LOGIN_FAIL:
       localStorage.removeItem('token');
       return {
         ...nextState,
