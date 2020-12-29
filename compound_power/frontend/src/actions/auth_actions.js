@@ -4,6 +4,7 @@ export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
+export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
@@ -24,6 +25,10 @@ const getAuthErrorMessages = (errors) => ({
   type: GET_AUTH_ERROR_MESSAGES,
   errors
 });
+
+const clearUserErrors = () => ({
+  type: CLEAR_USER_ERRORS
+})
 
 const loginSuccess = (userData) => ({
   type: LOGIN_SUCCESS,
@@ -75,7 +80,10 @@ export const login = (username, password) => (dispatch) => {
   const body = JSON.stringify({ username, password });
 
   axios.post('/api/auth/login', body, config)
-    .then(result => dispatch(loginSuccess(result.data)))
+    .then(result => {
+      dispatch(clearUserErrors());
+      dispatch(loginSuccess(result.data));
+    })
     .catch(error => {
       // make a toast message for user - sent to auth_errors_reducer.js
       dispatch(getAuthErrorMessages(error.response.data));

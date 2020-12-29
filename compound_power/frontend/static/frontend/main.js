@@ -1899,6 +1899,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "USER_LOADED": () => /* binding */ USER_LOADED,
 /* harmony export */   "AUTH_ERROR": () => /* binding */ AUTH_ERROR,
 /* harmony export */   "GET_AUTH_ERROR_MESSAGES": () => /* binding */ GET_AUTH_ERROR_MESSAGES,
+/* harmony export */   "CLEAR_USER_ERRORS": () => /* binding */ CLEAR_USER_ERRORS,
 /* harmony export */   "LOGIN_SUCCESS": () => /* binding */ LOGIN_SUCCESS,
 /* harmony export */   "LOGIN_FAIL": () => /* binding */ LOGIN_FAIL,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
@@ -1911,6 +1912,7 @@ var USER_LOADING = 'USER_LOADING';
 var USER_LOADED = 'USER_LOADED';
 var AUTH_ERROR = 'AUTH_ERROR';
 var GET_AUTH_ERROR_MESSAGES = 'GET_AUTH_ERROR_MESSAGES';
+var CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 var LOGIN_FAIL = 'LOGIN_FAIL';
 
@@ -1937,6 +1939,12 @@ var getAuthErrorMessages = function getAuthErrorMessages(errors) {
   return {
     type: GET_AUTH_ERROR_MESSAGES,
     errors: errors
+  };
+};
+
+var clearUserErrors = function clearUserErrors() {
+  return {
+    type: CLEAR_USER_ERRORS
   };
 };
 
@@ -1996,7 +2004,8 @@ var login = function login(username, password) {
       password: password
     });
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/login', body, config).then(function (result) {
-      return dispatch(loginSuccess(result.data));
+      dispatch(clearUserErrors());
+      dispatch(loginSuccess(result.data));
     })["catch"](function (error) {
       // make a toast message for user - sent to auth_errors_reducer.js
       dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer
@@ -2299,7 +2308,6 @@ var AuthAlert = /*#__PURE__*/function (_Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       var errors = this.props.errors;
-      debugger;
 
       if (errors !== prevProps.errors) {
         if (errors.detail) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors["detail"]));
@@ -3258,6 +3266,9 @@ var authErrorsReducer = function authErrorsReducer() {
   switch (action.type) {
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.GET_AUTH_ERROR_MESSAGES:
       return action.errors;
+
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_USER_ERRORS:
+      return {};
 
     default:
       return oldState;
