@@ -1,5 +1,6 @@
 import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS } from '../actions/auth_actions';
 
+// Initial Auth State
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
