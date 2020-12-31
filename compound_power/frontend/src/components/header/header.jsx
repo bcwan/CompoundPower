@@ -5,6 +5,8 @@ export class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const { logout } = this.props;
+
+    // logged in navbar
     const authLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <li className="nav-item">
@@ -15,6 +17,7 @@ export class Header extends Component {
       </ul>
     );
     
+    // no authentication, or log in
     const guestLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <li className="nav-item">
