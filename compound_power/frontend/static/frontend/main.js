@@ -1908,7 +1908,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "tokenConfig": () => /* binding */ tokenConfig,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
 /* harmony export */   "login": () => /* binding */ login,
-/* harmony export */   "logout": () => /* binding */ logout
+/* harmony export */   "logout": () => /* binding */ logout,
+/* harmony export */   "register": () => /* binding */ register
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -1973,6 +1974,19 @@ var loginFail = function loginFail() {
 var logoutSuccess = function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS
+  };
+};
+
+var registerFail = function registerFail() {
+  return {
+    type: REGISTER_FAIL
+  };
+};
+
+var registerSuccess = function registerSuccess(newUserData) {
+  return {
+    type: REGISTER_SUCCESS,
+    newUserData: newUserData
   };
 }; // Setup config with token helper
 
@@ -2042,6 +2056,35 @@ var logout = function logout() {
       dispatch(getAuthErrorMessages(error.response.data)); // changes state of auth reducer
 
       dispatch(authError());
+    });
+  };
+}; // REGISTER USER
+
+var register = function register(_ref) {
+  var username = _ref.username,
+      password = _ref.password,
+      email = _ref.email;
+  return function (dispatch) {
+    // Headers
+    var config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }; // Request Body
+
+    var body = JSON.stringify({
+      username: username,
+      password: password,
+      email: email
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/register', body, config).then(function (result) {
+      dispatch(clearUserErrors());
+      dispatch(registerSuccess(result.data));
+    })["catch"](function (error) {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data)); // failed registration
+
+      dispatch(registerFail());
     });
   };
 };

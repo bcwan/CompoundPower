@@ -47,6 +47,15 @@ const logoutSuccess = () => ({
   type: LOGOUT_SUCCESS
 });
 
+const registerFail = () => ({
+  type: REGISTER_FAIL
+})
+
+const registerSuccess = (newUserData) => ({
+  type: REGISTER_SUCCESS,
+  newUserData
+})
+
 // Setup config with token helper
 export const tokenConfig = (getState) => {
   const token = getState().auth.token;
@@ -115,5 +124,30 @@ export const logout = () => (dispatch, getState) => {
       dispatch(getAuthErrorMessages(error.response.data));
       // changes state of auth reducer
       dispatch(authError());
+  })
+}
+
+// REGISTER USER
+export const register = ({ username, password, email }) => (dispatch) => {
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  // Request Body
+  const body = JSON.stringify({ username, password, email });
+
+  axios.post('/api/auth/register', body, config)
+    .then(result => {
+      dispatch(clearUserErrors());
+      dispatch(registerSuccess(result.data));
+    })
+    .catch(error => {
+      // make a toast message for user - sent to auth_errors_reducer.js
+      dispatch(getAuthErrorMessages(error.response.data));
+      // failed registration
+      dispatch(registerFail());
   })
 }
