@@ -14,7 +14,12 @@ export class RegisterForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('Submit');
+    const { password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.props.createMessage({ noPasswordMatch: 'Passwords do not match' })
+    } else {
+      console.log('Submit');
+    }
   }
 
   onChange = e => {

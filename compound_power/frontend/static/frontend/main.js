@@ -2388,6 +2388,7 @@ var AuthAlert = /*#__PURE__*/function (_Component) {
         if (errors.username) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Username: ".concat(errors.username.join()));
         if (errors.password) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("Password: ".concat(errors.password.join()));
         if (errors.non_field_errors) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors.non_field_errors.join()));
+        if (errors.noPasswordMatch) (0,_toast_react_toast__WEBPACK_IMPORTED_MODULE_1__.notifyFailure)("".concat(errors.noPasswordMatch));
       }
     }
   }, {
@@ -2650,7 +2651,17 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
 
     _this.onSubmit = function (e) {
       e.preventDefault();
-      console.log('Submit');
+      var _this$state = _this.state,
+          password = _this$state.password,
+          confirmPassword = _this$state.confirmPassword;
+
+      if (password !== confirmPassword) {
+        _this.props.createMessage({
+          noPasswordMatch: 'Passwords do not match'
+        });
+      } else {
+        console.log('Submit');
+      }
     };
 
     _this.onChange = function (e) {
@@ -2669,11 +2680,11 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
   _createClass(RegisterForm, [{
     key: "render",
     value: function render() {
-      var _this$state = this.state,
-          username = _this$state.username,
-          email = _this$state.email,
-          password = _this$state.password,
-          confirmPassword = _this$state.confirmPassword;
+      var _this$state2 = this.state,
+          username = _this$state2.username,
+          email = _this$state2.email,
+          password = _this$state2.password,
+          confirmPassword = _this$state2.confirmPassword;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "col-md-6 m-auto"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
