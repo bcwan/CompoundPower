@@ -51,9 +51,9 @@ const registerFail = () => ({
   type: REGISTER_FAIL
 })
 
-const registerSuccess = (newUserData) => ({
+const registerSuccess = (userData) => ({
   type: REGISTER_SUCCESS,
-  newUserData
+  userData
 })
 
 // Setup config with token helper

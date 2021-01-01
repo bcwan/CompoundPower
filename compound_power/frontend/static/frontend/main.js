@@ -1983,10 +1983,10 @@ var registerFail = function registerFail() {
   };
 };
 
-var registerSuccess = function registerSuccess(newUserData) {
+var registerSuccess = function registerSuccess(userData) {
   return {
     type: REGISTER_SUCCESS,
-    newUserData: newUserData
+    userData: userData
   };
 }; // Setup config with token helper
 
@@ -3453,6 +3453,7 @@ var authReducer = function authReducer() {
       });
 
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_SUCCESS:
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.REGISTER_SUCCESS:
       localStorage.setItem('token', action.userData.token);
       return _objectSpread(_objectSpread(_objectSpread({}, nextState), action.userData), {}, {
         isAuthenticated: true,
@@ -3462,6 +3463,7 @@ var authReducer = function authReducer() {
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.AUTH_ERROR:
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_FAIL:
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGOUT_SUCCESS:
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.REGISTER_FAIL:
       localStorage.removeItem('token');
       return _objectSpread(_objectSpread({}, nextState), {}, {
         token: null,

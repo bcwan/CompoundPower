@@ -1,4 +1,13 @@
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS } from '../actions/auth_actions';
+import { 
+  USER_LOADED, 
+  USER_LOADING, 
+  AUTH_ERROR, 
+  LOGIN_SUCCESS, 
+  LOGIN_FAIL, 
+  LOGOUT_SUCCESS,
+  REGISTER_FAIL,
+  REGISTER_SUCCESS 
+} from '../actions/auth_actions';
 
 // Initial Auth State
 const initialState = {
@@ -25,6 +34,7 @@ const authReducer = (oldState = initialState, action) => {
         isLoading: true
       }
     case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
       localStorage.setItem('token', action.userData.token);
       return {
         ...nextState,
@@ -35,6 +45,7 @@ const authReducer = (oldState = initialState, action) => {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
+    case REGISTER_FAIL:
       localStorage.removeItem('token');
       return {
         ...nextState,
