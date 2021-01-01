@@ -1909,6 +1909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ // AUTH ACTIONS
 
 var USER_LOADING = 'USER_LOADING';
 var USER_LOADED = 'USER_LOADED';
@@ -2745,15 +2746,19 @@ var Header = /*#__PURE__*/function (_Component) {
       var _this$props$auth = this.props.auth,
           isAuthenticated = _this$props$auth.isAuthenticated,
           user = _this$props$auth.user;
-      var logout = this.props.logout;
+      var logout = this.props.logout; // logged in navbar
+
       var authLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "navbar-nav mr-auto mt-2 mt-lg-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "navbar-text mr-3"
+      }, user ? "Welcome ".concat(user.username) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "nav-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: logout,
         className: "nav-link btn btn-info btn-sm text-light"
-      }, "Logout")));
+      }, "Logout"))); // no authentication, or log in
+
       var guestLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "navbar-nav mr-auto mt-2 mt-lg-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
@@ -3379,6 +3384,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+ // Initial Auth State
 
 var initialState = {
   token: localStorage.getItem('token'),

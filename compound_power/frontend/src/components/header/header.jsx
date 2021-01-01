@@ -9,6 +9,9 @@ export class Header extends Component {
     // logged in navbar
     const authLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+        <span className="navbar-text mr-3">
+          { user ? `Welcome ${user.username}` : ""}
+        </span>
         <li className="nav-item">
           <button onClick={logout} className="nav-link btn btn-info btn-sm text-light">
             Logout
