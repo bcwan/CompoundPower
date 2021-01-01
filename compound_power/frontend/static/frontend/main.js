@@ -1903,6 +1903,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "LOGIN_SUCCESS": () => /* binding */ LOGIN_SUCCESS,
 /* harmony export */   "LOGIN_FAIL": () => /* binding */ LOGIN_FAIL,
 /* harmony export */   "LOGOUT_SUCCESS": () => /* binding */ LOGOUT_SUCCESS,
+/* harmony export */   "REGISTER_FAIL": () => /* binding */ REGISTER_FAIL,
+/* harmony export */   "REGISTER_SUCCESS": () => /* binding */ REGISTER_SUCCESS,
 /* harmony export */   "tokenConfig": () => /* binding */ tokenConfig,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
 /* harmony export */   "login": () => /* binding */ login,
@@ -1920,6 +1922,8 @@ var CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 var LOGIN_FAIL = 'LOGIN_FAIL';
 var LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+var REGISTER_FAIL = 'REGISTER_FAIL';
+var REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
 var userLoading = function userLoading() {
   return {
