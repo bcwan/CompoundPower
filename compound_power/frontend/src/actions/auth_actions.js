@@ -45,11 +45,8 @@ const logoutSuccess = () => ({
   type: LOGOUT_SUCCESS
 });
 
-// CHECK TOKEN AND LOAD USER
-export const loadUser = () => (dispatch, getState) => {
-  // User Loading
-  dispatch(userLoading());
-  // Get token from state
+// Setup config with token helper
+export const tokenConfig = (getState) => {
   const token = getState().auth.token;
   // Headers
   const config = {
@@ -63,7 +60,15 @@ export const loadUser = () => (dispatch, getState) => {
     config.headers['Authorization'] = `Token ${token}`;
   }
 
-  axios.get('/api/auth/user', config)
+  return config;
+}
+
+// CHECK TOKEN AND LOAD USER
+export const loadUser = () => (dispatch, getState) => {
+  // User Loading
+  dispatch(userLoading());
+
+  axios.get('/api/auth/user', tokenConfig(getState))
     .then(result => dispatch(userLoaded(result.data)))
     .catch(error => {
       // make a toast message for user - sent to auth_errors_reducer.js
@@ -101,19 +106,7 @@ export const login = (username, password) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
 
-  const token = getState().auth.token;
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  // If token, add to headers config
-  if (token) {
-    config.headers['Authorization'] = `Token ${token}`;
-  }
-
-  axios.post('/api/auth/logout', null, config)
+  axios.post('/api/auth/logout', null, tokenConfig(getState))
     .then(result => dispatch(logoutSuccess()))
     .catch(error => {
       // make a toast message for user - sent to auth_errors_reducer.js

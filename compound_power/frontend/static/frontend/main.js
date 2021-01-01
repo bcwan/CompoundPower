@@ -1903,6 +1903,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "LOGIN_SUCCESS": () => /* binding */ LOGIN_SUCCESS,
 /* harmony export */   "LOGIN_FAIL": () => /* binding */ LOGIN_FAIL,
 /* harmony export */   "LOGOUT_SUCCESS": () => /* binding */ LOGOUT_SUCCESS,
+/* harmony export */   "tokenConfig": () => /* binding */ tokenConfig,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
 /* harmony export */   "login": () => /* binding */ login,
 /* harmony export */   "logout": () => /* binding */ logout
@@ -1969,27 +1970,30 @@ var logoutSuccess = function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS
   };
-}; // CHECK TOKEN AND LOAD USER
+}; // Setup config with token helper
 
+
+var tokenConfig = function tokenConfig(getState) {
+  var token = getState().auth.token; // Headers
+
+  var config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }; // If token, add to headers config
+
+  if (token) {
+    config.headers['Authorization'] = "Token ".concat(token);
+  }
+
+  return config;
+}; // CHECK TOKEN AND LOAD USER
 
 var loadUser = function loadUser() {
   return function (dispatch, getState) {
     // User Loading
-    dispatch(userLoading()); // Get token from state
-
-    var token = getState().auth.token; // Headers
-
-    var config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }; // If token, add to headers config
-
-    if (token) {
-      config.headers['Authorization'] = "Token ".concat(token);
-    }
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/auth/user', config).then(function (result) {
+    dispatch(userLoading());
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/auth/user', tokenConfig(getState)).then(function (result) {
       return dispatch(userLoaded(result.data));
     })["catch"](function (error) {
       // make a toast message for user - sent to auth_errors_reducer.js
@@ -2027,18 +2031,7 @@ var login = function login(username, password) {
 
 var logout = function logout() {
   return function (dispatch, getState) {
-    var token = getState().auth.token;
-    var config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }; // If token, add to headers config
-
-    if (token) {
-      config.headers['Authorization'] = "Token ".concat(token);
-    }
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/logout', null, config).then(function (result) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/logout', null, tokenConfig(getState)).then(function (result) {
       return dispatch(logoutSuccess());
     })["catch"](function (error) {
       // make a toast message for user - sent to auth_errors_reducer.js
