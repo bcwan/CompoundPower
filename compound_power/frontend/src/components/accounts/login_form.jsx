@@ -13,6 +13,8 @@ export class LoginForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { username, password } = this.state;
+    const { login } = this.props;
+    debugger;
     this.props.login(username, password);
   }
 

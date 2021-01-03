@@ -1,4 +1,8 @@
-import { GET_AUTH_ERROR_MESSAGES, CLEAR_USER_ERRORS } from '../actions/auth_actions';
+import { 
+  GET_AUTH_ERROR_MESSAGES, 
+  CLEAR_USER_ERRORS, 
+  CREATE_AUTH_ERROR_MESSAGE } 
+from '../actions/auth_actions';
 
 const authErrorsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -8,6 +12,9 @@ const authErrorsReducer = (oldState = {}, action) => {
       return action.errors;
     case CLEAR_USER_ERRORS:
       return {};
+    case CREATE_AUTH_ERROR_MESSAGE:
+      debugger;
+      return action.message;
     default:
       return oldState;
   }

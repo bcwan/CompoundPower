@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import RegisterForm from './register_form';
-import { register } from '../../actions/auth_actions'
-import { createMessage } from '../../actions/messages_actions'
+import { register, makeErrorMessage } from '../../actions/auth_actions'
 
 const mSTP = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
@@ -10,7 +9,7 @@ const mSTP = (state) => ({
 // createMessage will dispatch message to reducer for auth_alert_container.js
 const mDTP = (dispatch) => ({
   register: (username, password, email) => dispatch(register(username, password, email)),
-  createMessage: (message) => dispatch(createMessage(message))
+  makeErrorMessage: (message) => dispatch(makeErrorMessage(message))
 });
 
 export default connect(mSTP, mDTP)(RegisterForm);

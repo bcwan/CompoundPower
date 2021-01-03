@@ -1905,6 +1905,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "LOGOUT_SUCCESS": () => /* binding */ LOGOUT_SUCCESS,
 /* harmony export */   "REGISTER_FAIL": () => /* binding */ REGISTER_FAIL,
 /* harmony export */   "REGISTER_SUCCESS": () => /* binding */ REGISTER_SUCCESS,
+/* harmony export */   "CREATE_AUTH_ERROR_MESSAGE": () => /* binding */ CREATE_AUTH_ERROR_MESSAGE,
+/* harmony export */   "makeErrorMessage": () => /* binding */ makeErrorMessage,
 /* harmony export */   "tokenConfig": () => /* binding */ tokenConfig,
 /* harmony export */   "loadUser": () => /* binding */ loadUser,
 /* harmony export */   "login": () => /* binding */ login,
@@ -1925,6 +1927,7 @@ var LOGIN_FAIL = 'LOGIN_FAIL';
 var LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 var REGISTER_FAIL = 'REGISTER_FAIL';
 var REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+var CREATE_AUTH_ERROR_MESSAGE = 'CREATE_AUTH_ERROR_MESSAGE';
 
 var userLoading = function userLoading() {
   return {
@@ -1988,8 +1991,21 @@ var registerSuccess = function registerSuccess(userData) {
     type: REGISTER_SUCCESS,
     userData: userData
   };
-}; // Setup config with token helper
+};
 
+var createAuthErrorMessage = function createAuthErrorMessage(message) {
+  return {
+    type: CREATE_AUTH_ERROR_MESSAGE,
+    message: message
+  };
+}; // create customized error message for auth action
+
+
+var makeErrorMessage = function makeErrorMessage(message) {
+  return function (dispatch) {
+    return dispatch(createAuthErrorMessage(message));
+  };
+}; // Setup config with token helper
 
 var tokenConfig = function tokenConfig(getState) {
   var token = getState().auth.token; // Headers
@@ -2106,6 +2122,7 @@ __webpack_require__.r(__webpack_exports__);
 var CREATE_MESSAGE = 'CREATE_MESSAGE'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
+  debugger;
   return {
     type: CREATE_MESSAGE,
     message: message
@@ -2492,6 +2509,8 @@ var LoginForm = /*#__PURE__*/function (_Component) {
       var _this$state = _this.state,
           username = _this$state.username,
           password = _this$state.password;
+      var login = _this.props.login;
+      debugger;
 
       _this.props.login(username, password);
     };
@@ -2654,9 +2673,13 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
       var _this$state = _this.state,
           password = _this$state.password,
           confirmPassword = _this$state.confirmPassword;
+      var makeErrorMessage = _this.props.makeErrorMessage;
+      debugger;
 
       if (password !== confirmPassword) {
-        _this.props.createMessage({
+        debugger;
+
+        _this.props.makeErrorMessage({
           noPasswordMatch: 'Passwords do not match'
         });
       } else {
@@ -3407,6 +3430,10 @@ var authErrorsReducer = function authErrorsReducer() {
 
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_USER_ERRORS:
       return {};
+
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.CREATE_AUTH_ERROR_MESSAGE:
+      debugger;
+      return action.message;
 
     default:
       return oldState;

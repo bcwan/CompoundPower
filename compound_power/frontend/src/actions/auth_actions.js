@@ -11,6 +11,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const CREATE_AUTH_ERROR_MESSAGE = 'CREATE_AUTH_ERROR_MESSAGE';
 
 const userLoading = () => ({
   type: USER_LOADING
@@ -55,6 +56,19 @@ const registerSuccess = (userData) => ({
   type: REGISTER_SUCCESS,
   userData
 })
+
+const createAuthErrorMessage = (message) => {
+  return {
+    type: CREATE_AUTH_ERROR_MESSAGE,
+    message
+  }
+}
+
+// create customized error message for auth action
+export const makeErrorMessage = (message) => (dispatch) => {
+  return dispatch(createAuthErrorMessage(message));
+}
+
 
 // Setup config with token helper
 export const tokenConfig = (getState) => {
