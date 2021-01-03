@@ -13,7 +13,6 @@ const authErrorsReducer = (oldState = {}, action) => {
     case CLEAR_USER_ERRORS:
       return {};
     case CREATE_AUTH_ERROR_MESSAGE:
-      debugger;
       return action.message;
     default:
       return oldState;

@@ -2122,7 +2122,6 @@ __webpack_require__.r(__webpack_exports__);
 var CREATE_MESSAGE = 'CREATE_MESSAGE'; // CREATE MESSAGE
 
 var createMessage = function createMessage(message) {
-  debugger;
   return {
     type: CREATE_MESSAGE,
     message: message
@@ -2257,7 +2256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header/header_container */ "./compound_power/frontend/src/components/header/header_container.js");
 /* harmony import */ var _users_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./users/dashboard */ "./compound_power/frontend/src/components/users/dashboard.jsx");
 /* harmony import */ var _accounts_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./accounts/login_form_container */ "./compound_power/frontend/src/components/accounts/login_form_container.js");
-/* harmony import */ var _accounts_register_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accounts/register_form */ "./compound_power/frontend/src/components/accounts/register_form.jsx");
+/* harmony import */ var _accounts_register_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accounts/register_form_container */ "./compound_power/frontend/src/components/accounts/register_form_container.js");
 /* harmony import */ var _routes_private_route__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes/private_route */ "./compound_power/frontend/src/components/routes/private_route.jsx");
 /* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
 /* harmony import */ var _accounts_auth_alert_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./accounts/auth_alert_container */ "./compound_power/frontend/src/components/accounts/auth_alert_container.js");
@@ -2330,7 +2329,7 @@ var App = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         exact: true,
         path: "/register",
-        component: _accounts_register_form__WEBPACK_IMPORTED_MODULE_5__.default
+        component: _accounts_register_form_container__WEBPACK_IMPORTED_MODULE_5__.default
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         exact: true,
         path: "/login",
@@ -2509,8 +2508,6 @@ var LoginForm = /*#__PURE__*/function (_Component) {
       var _this$state = _this.state,
           username = _this$state.username,
           password = _this$state.password;
-      var login = _this.props.login;
-      debugger;
 
       _this.props.login(username, password);
     };
@@ -2674,11 +2671,8 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
           password = _this$state.password,
           confirmPassword = _this$state.confirmPassword;
       var makeErrorMessage = _this.props.makeErrorMessage;
-      debugger;
 
       if (password !== confirmPassword) {
-        debugger;
-
         _this.props.makeErrorMessage({
           noPasswordMatch: 'Passwords do not match'
         });
@@ -2762,6 +2756,46 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
   return RegisterForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RegisterForm);
+
+/***/ }),
+
+/***/ "./compound_power/frontend/src/components/accounts/register_form_container.js":
+/*!************************************************************************************!*\
+  !*** ./compound_power/frontend/src/components/accounts/register_form_container.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _register_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register_form */ "./compound_power/frontend/src/components/accounts/register_form.jsx");
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  };
+}; // createMessage will dispatch message to reducer for auth_alert_container.js
+
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    register: function register(username, password, email) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.register)(username, password, email));
+    },
+    makeErrorMessage: function makeErrorMessage(message) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.makeErrorMessage)(message));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_register_form__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -3432,7 +3466,6 @@ var authErrorsReducer = function authErrorsReducer() {
       return {};
 
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.CREATE_AUTH_ERROR_MESSAGE:
-      debugger;
       return action.message;
 
     default:

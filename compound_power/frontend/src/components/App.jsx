@@ -7,7 +7,7 @@ import Dashboard from './users/dashboard';
 
 // login, account recreation components and routes
 import LoginFormContainer from './accounts/login_form_container';
-import RegisterForm from './accounts/register_form';
+import RegisterFormContainer from './accounts/register_form_container';
 import PrivateRoute from './routes/private_route';
 import { loadUser } from '../actions/auth_actions';
 
@@ -34,7 +34,7 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
-                <Route exact path="/register" component={RegisterForm} />
+                <Route exact path="/register" component={RegisterFormContainer} />
                 <Route exact path="/login" component={LoginFormContainer} />
               </Switch>
             </div>
