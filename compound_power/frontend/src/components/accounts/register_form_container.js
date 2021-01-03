@@ -9,7 +9,7 @@ const mSTP = (state) => ({
 // createMessage will dispatch message to reducer for auth_alert_container.js
 const mDTP = (dispatch) => {
   return {
-    register: (username, password, email) => dispatch(register(username, password, email)),
+    register: (newUser) => dispatch(register(newUser)),
     makeErrorMessage: (message) => dispatch(makeErrorMessage(message))
   }
 };

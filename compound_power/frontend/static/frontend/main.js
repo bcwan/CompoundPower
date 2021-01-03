@@ -2626,7 +2626,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2668,6 +2669,8 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
     _this.onSubmit = function (e) {
       e.preventDefault();
       var _this$state = _this.state,
+          username = _this$state.username,
+          email = _this$state.email,
           password = _this$state.password,
           confirmPassword = _this$state.confirmPassword;
 
@@ -2676,7 +2679,13 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
           noPasswordMatch: 'Passwords do not match'
         });
       } else {
-        console.log('Submit');
+        var newUser = {
+          username: username,
+          password: password,
+          email: email
+        };
+
+        _this.props.register(newUser);
       }
     };
 
@@ -2696,6 +2705,12 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
   _createClass(RegisterForm, [{
     key: "render",
     value: function render() {
+      if (this.props.isAuthenticated) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Redirect, {
+          to: "/"
+        });
+      }
+
       var _this$state2 = this.state,
           username = _this$state2.username,
           email = _this$state2.email,
@@ -2746,7 +2761,7 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/login"
       }, "Login")))));
     }
@@ -2785,8 +2800,8 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    register: function register(username, password, email) {
-      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.register)(username, password, email));
+    register: function register(newUser) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.register)(newUser));
     },
     makeErrorMessage: function makeErrorMessage(message) {
       return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.makeErrorMessage)(message));

@@ -14,11 +14,16 @@ export class RegisterForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { password, confirmPassword } = this.state;
+    const { username, email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       this.props.makeErrorMessage({ noPasswordMatch: 'Passwords do not match' })
     } else {
-      console.log('Submit');
+      const newUser = {
+        username,
+        password,
+        email
+      };
+      this.props.register(newUser)
     }
   }
 
@@ -27,6 +32,9 @@ export class RegisterForm extends Component {
   }
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />
+    }
     const { username, email, password, confirmPassword } = this.state;
     return (
       <div className="col-md-6 m-auto">
