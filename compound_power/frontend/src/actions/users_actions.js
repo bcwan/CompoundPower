@@ -2,6 +2,7 @@ import axios from 'axios';
 
 // TOAST FOR CUSTOMIZED MESSAGES
 import { createMessage } from '../actions/messages_actions';
+import { tokenConfig } from '../actions/auth_actions'
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER = 'GET_USER';
@@ -37,8 +38,8 @@ const getErrors = (errors) => ({
 })
 
 // GET USERS
-export const fetchAllUsers = () => dispatch => {
-  axios.get('/api/users/')
+export const fetchAllUsers = () => (dispatch, getState) => {
+  axios.get('/api/users/', tokenConfig(getState))
     .then(users => {
       dispatch(createMessage({ loadUsers: 'Loaded all users!' }))
       dispatch(getAllUsers(users))
@@ -50,8 +51,8 @@ export const fetchAllUsers = () => dispatch => {
 }
 
 // DELETE USER
-export const deleteUser = (id) => dispatch => {
-  axios.delete(`/api/users/${id}/`)
+export const deleteUser = (id) => (dispatch, getState) => {
+  axios.delete(`/api/users/${id}/`, tokenConfig(getState))
     .then(() => {
       dispatch(createMessage({ deleteUser: 'Deleted user successfully!'}))
       dispatch(removeUser(id))
@@ -63,8 +64,8 @@ export const deleteUser = (id) => dispatch => {
 }
 
 // POST USER
-export const postUser = (user) => dispatch => {
-  axios.post('/api/users/', user)
+export const postUser = (user) => (dispatch, getState) => {
+  axios.post('/api/users/', user, tokenConfig(getState))
     .then(user => {
       dispatch(createMessage({ addUser: 'Added user successfully!'}))
       dispatch(addUser(user))

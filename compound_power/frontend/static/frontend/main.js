@@ -2151,7 +2151,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/messages_actions */ "./compound_power/frontend/src/actions/messages_actions.js");
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/auth_actions */ "./compound_power/frontend/src/actions/auth_actions.js");
  // TOAST FOR CUSTOMIZED MESSAGES
+
 
 
 var GET_ALL_USERS = 'GET_ALL_USERS';
@@ -2198,8 +2200,8 @@ var getErrors = function getErrors(errors) {
 
 
 var fetchAllUsers = function fetchAllUsers() {
-  return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/').then(function (users) {
+  return function (dispatch, getState) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/', (0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.tokenConfig)(getState)).then(function (users) {
       dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
         loadUsers: 'Loaded all users!'
       }));
@@ -2212,8 +2214,8 @@ var fetchAllUsers = function fetchAllUsers() {
 }; // DELETE USER
 
 var deleteUser = function deleteUser(id) {
-  return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/")).then(function () {
+  return function (dispatch, getState) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/".concat(id, "/"), (0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.tokenConfig)(getState)).then(function () {
       dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
         deleteUser: 'Deleted user successfully!'
       }));
@@ -2226,8 +2228,8 @@ var deleteUser = function deleteUser(id) {
 }; // POST USER
 
 var postUser = function postUser(user) {
-  return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/', user).then(function (user) {
+  return function (dispatch, getState) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/', user, (0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.tokenConfig)(getState)).then(function (user) {
       dispatch((0,_actions_messages_actions__WEBPACK_IMPORTED_MODULE_1__.createMessage)({
         addUser: 'Added user successfully!'
       }));
