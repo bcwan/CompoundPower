@@ -2670,7 +2670,6 @@ var RegisterForm = /*#__PURE__*/function (_Component) {
       var _this$state = _this.state,
           password = _this$state.password,
           confirmPassword = _this$state.confirmPassword;
-      var makeErrorMessage = _this.props.makeErrorMessage;
 
       if (password !== confirmPassword) {
         _this.props.makeErrorMessage({

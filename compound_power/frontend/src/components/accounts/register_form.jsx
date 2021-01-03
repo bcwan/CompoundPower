@@ -15,7 +15,6 @@ export class RegisterForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { password, confirmPassword } = this.state;
-    const { makeErrorMessage } = this.props; 
     if (password !== confirmPassword) {
       this.props.makeErrorMessage({ noPasswordMatch: 'Passwords do not match' })
     } else {
