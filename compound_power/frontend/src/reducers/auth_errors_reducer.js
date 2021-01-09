@@ -4,6 +4,7 @@ import {
   CREATE_AUTH_ERROR_MESSAGE } 
 from '../actions/auth_actions';
 
+// Reducer for Authentication Errors
 const authErrorsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let nextState = Object.assign({}, oldState);
